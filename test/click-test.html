@@ -1,0 +1,85 @@
+<!doctype HTML>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+</head>
+<script src="https://aframe.io/releases/0.9.0/aframe.min.js"></script>
+<script src="https://rawgit.com/jeromeetienne/AR.js/master/aframe/build/aframe-ar.js"></script>
+<script src="https://rawgit.com/donmccurdy/aframe-extras/master/dist/aframe-extras.loaders.min.js"></script>
+<script src='https://hammerjs.github.io/dist/hammer.min.js'></script>
+<script src="../scripts/sound.js"></script>
+<script src="../scripts/main.js"></script>
+<script src="../scripts/drag.js"></script>
+
+<body style='margin : 0; overflow: hidden;'>
+<!-- we add detectionMode and matrixCodeType to tell AR.js to recognize barcode markers -->
+<a-scene embedded arjs='sourceType: webcam; debugUIEnabled: false; detectionMode: mono_and_matrix; matrixCodeType: 4x4;' vr-mode-ui="enabled: false">
+    <a-assets>
+        <a-asset-item id="allosaurus" src="../assets/models/animated/allosaurus/scene.gltf" preload="auto"></a-asset-item>
+        <a-asset-item id="bunny" src="../assets/models/animated/bunny/scene.gltf" preload="auto"></a-asset-item>
+    </a-assets>
+
+    <a-marker markerhandler="entityId: bunny-entity" emitevents="true" cursor="rayOrigin: mouse" id="animated-marker" type='pattern' preset="hiro">
+        <a-entity
+            id="bunny-entity"
+            gltf-model="#bunny"
+            scale="0.05 0.05 0.05">
+        </a-entity>
+    </a-marker>
+
+    <a-marker markerhandler="entityId: allosaurus-entity" emitevents="true" cursor="rayOrigin: mouse" id="animated-marker-2" type='pattern' preset="kanji">
+        <a-entity
+            id="allosaurus-entity"
+            gltf-model="#allosaurus"
+            scale="0.5 0.5 0.5">
+        </a-entity>
+    </a-marker>
+    <a-entity camera></a-entity>
+</a-scene>
+</body>
+
+<script>
+    var targetEl = {};
+    var hammertime = new Hammer(document.querySelector('body'));
+    var pinch = new Hammer.Pinch(); // Pinch is not by default in the recognisers
+    hammertime.add(pinch); // add it to the Manager instance
+
+    hammertime.on('pan', (ev) => {
+        if (targetEl) {
+            let rotation = targetEl.getAttribute("rotation");
+            switch(ev.direction) {
+                case 2: rotation.y = rotation.y + 4; break;
+                case 4: rotation.y = rotation.y - 4; break;
+                case 8: rotation.x = rotation.x + 4; break;
+                case 16: rotation.x = rotation.x - 4; break;
+                default: break;
+            }
+            targetEl.setAttribute("rotation", rotation);
+        }
+    });
+
+    hammertime.on("pinch", (ev) => {
+        let scale = {x:ev.scale, y:ev.scale, z:ev.scale};
+        if(targetEl) {
+            targetEl.setAttribute("scale", scale);
+        }
+    });
+
+    AFRAME.registerComponent('markerhandler', {
+        schema: {
+            entityId: {type: 'string', default: ''}
+        },
+        init: function () {
+            const aEntity = document.querySelector(`#${this.data.entityId}`);
+
+            this.el.addEventListener('click', function (ev) {
+                const intersectedElement = ev && ev.detail && ev.detail.intersectedEl;
+                if (aEntity && intersectedElement === aEntity) {
+                    targetEl = aEntity;
+                    console.log(targetEl.getAttribute('id'));
+                }
+            });
+        }
+    });
+</script>
+</html>

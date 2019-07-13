@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>NKZoo</title>
+    <script src="https://aframe.io/releases/0.9.0/aframe.min.js"></script>
+    <script src="https://jeromeetienne.github.io/AR.js/aframe/build/aframe-ar.js"></script>
+    <script src='https://rawgit.com/donmccurdy/aframe-extras/master/dist/aframe-extras.loaders.min.js'></script>
+    <script src="scripts/entity-event.js"></script>
+</head>
+
+<body style="margin: 0; overflow: hidden;">
+<a-scene id='scene'
+         embedded arjs='sourceType: webcam; detectionMode: mono_and_matrix; matrixCodeType: 4x4; debugUIEnabled: false;'
+         vr-mode-ui='enabled: false'
+         shadow="type: pcfsoft">
+
+    <a-assets>
+        <a-asset-item id="allosaurus" src="../assets/models/animated/allosaurus/scene.gltf"></a-asset-item>
+        <a-asset-item id="bunny" src="../assets/models/animated/bunny/scene.gltf"></a-asset-item>
+        <a-asset-item id="butterfly" src="../assets/models/animated/butterfly/scene.glb"></a-asset-item>
+        <a-asset-item id="cow" src="../assets/models/animated/cow/scene.gltf"></a-asset-item>
+        <a-asset-item id="crocodile" src="../assets/models/animated/crocodile/scene.gltf"></a-asset-item>
+        <a-asset-item id="guppie" src="../assets/models/animated/guppie/scene.gltf"></a-asset-item>
+        <a-asset-item id="penguin" src="../assets/models/animated/penguin/scene.gltf"></a-asset-item>
+        <a-asset-item id="hippopotamus" src="../assets/models/animated/hippopotamus/scene.gltf"></a-asset-item>
+        <a-asset-item id="rhinoceros" src="../assets/models/animated/rhinoceros/scene.gltf"></a-asset-item>
+        <a-asset-item id="macaw" src="../assets/models/animated/scarlet_macaw/scene.gltf"></a-asset-item>
+        <a-asset-item id="shark" src="../assets/models/animated/shark/scene.gltf"></a-asset-item>
+        <a-asset-item id="squirrel" src="../assets/models/animated/squirrel/scene.gltf"></a-asset-item>
+        <a-asset-item id="whale" src="../assets/models/animated/whale/scene.gltf"></a-asset-item>
+        <a-asset-item id="wolf" src="../assets/models/animated/wolf/scene.gltf"></a-asset-item>
+    </a-assets>
+
+    <a-entity camera look-controls wasd-controls></a-entity>
+
+    <a-marker type='barcode' value='1' register-events>
+        <a-entity gltf-model="#butterfly" animation-mixer kscale="4" shadow="cast: true; receive: true;" position="0 0 0"></a-entity>
+    </a-marker>
+</a-scene>
+
+<div id="ui" style='position: fixed; top: 10px; width:100%; z-index: 1;'>
+    <button id="btn-save" onclick="window.save()">SAVE</button>
+</div>
+
+</body>
+</html>

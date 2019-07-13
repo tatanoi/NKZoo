@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<head>
+    <title>test</title>
+	<link rel="icon" href="favicon.ico">
+	<script src="https://aframe.io/releases/0.9.0/aframe.min.js"></script>
+	<script src='https://rawgit.com/donmccurdy/aframe-extras/master/dist/aframe-extras.loaders.min.js'></script>
+	<script src='https://hammerjs.github.io/dist/hammer.min.js'></script>
+	<script src="./scripts/drag.js"></script>
+</head>
+
+<body style="margin: 0px; overflow: hidden;">
+	<h1 style='position: fixed; top: 10px; width:100%; text-align: center; z-index: 1;'>test model</h1>
+    <a-scene background="color: #AAAAAA" >
+        <a-entity camera="active: true" look-controls wasd-controls position="0 -2 0" data-aframe-default-camera></a-entity>
+        <a-assets>
+            <a-asset-item id="butterfly" src="./assets/models/animated/butterfly/scene.glb"></a-asset-item>
+        </a-assets>
+    
+        
+        <a-entity
+            drag-event=""
+            gltf-model="#butterfly"
+            position="0 0 -1"
+            rotation="90 0 0"
+            scale="0.01 0.01 0.01">
+        </a-entity>
+    </a-scene>
+    
+    
+</body>
+
+<script>
+    window.dragInit();
+</script>
+</html>
