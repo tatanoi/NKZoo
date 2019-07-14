@@ -5,6 +5,16 @@ function DragUtilsClass(props) {
 let DragUtils = new DragUtilsClass();
 let targetEl = DragUtils.targetEl;
 
+
+//////////////////////////////////////////////////////////////////////////////
+
+let infoEl = document.querySelector(`#info`);
+function updateTarget() {
+    if (targetEl) {
+        infoEl.innerHTML = targetEl.getAttribute('id');
+    }
+}
+
 //////////////////////////////////////////////////////////////////////////////
 
 let hammertime = new Hammer(document.querySelector('body'));
@@ -24,6 +34,7 @@ hammertime.on('pan', (ev) => {
 });
 
 /////////////////////////////////////////////////////////////////////////////////
+
 AFRAME.registerComponent('marker-handler', {
     init: function () {
         let entity = this.el.querySelector(`.drag-entity`);
@@ -50,6 +61,7 @@ AFRAME.registerComponent('click-handler', {
                 if (entity && intersectedElement === entity) {
                     console.log(entity.getAttribute('id'));
                     targetEl = entity;
+                    updateTarget();
                     break;
                 }
             }
