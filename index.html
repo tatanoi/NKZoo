@@ -6,31 +6,77 @@
 	<script src="https://jeromeetienne.github.io/AR.js/aframe/build/aframe-ar.js"></script>
 	<script src='https://rawgit.com/donmccurdy/aframe-extras/master/dist/aframe-extras.loaders.min.js'></script>
 	<script src='https://hammerjs.github.io/dist/hammer.min.js'></script>
-	<script src="./scripts/sound.js"></script>
 	<script src="./scripts/main.js"></script>
 
 	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+	<style>
+		.btn-circle.btn-xl {
+			width: 70px;
+			height: 70px;
+			padding: 10px 16px;
+			border-radius: 35px;
+			font-size: 24px;
+			line-height: 1.33;
+		}
+
+		.btn-circle {
+			position: relative;
+			width: 40px;
+			height: 40px;
+			padding: 6px 0px;
+			border-radius: 15px;
+			text-align: center;
+			font-size: 12px;
+			line-height: 1.42857;
+			background-color: whitesmoke;
+			border-width: 1px;
+			border-color: #000;
+		}
+
+		.btn-circle img {
+			position:absolute;
+			top: 50%;
+			left:50%;
+			width: 35px; height: 35px;
+			-webkit-transform: translate(-50%, -50%);
+			-ms-transform: translate(-50%, -50%);
+			transform: translate(-50%, -50%);
+		}
+		.navbar-inner {
+			background:transparent;
+		}
+	</style>
 </head>
 
+
 <body style="margin: 0; overflow: hidden;">
-	<nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
-		<a class="navbar-brand" href="#">NK'Zoo</a>
+	<nav class="navbar navbar-expand fixed-top navbar-inner" style="background-color: rgba(0,0,0,0.0);">
 		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
 			<span class="navbar-toggler-icon"></span>
 		</button>
 		<div class="collapse navbar-collapse" id="navbarCollapse">
 			<ul class="navbar-nav mr-auto">
 				<li class="nav-item active">
-					<a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+					<div class="dropdown " style="background-color: white; border-radius: 15px; padding: 0px;">
+						<button id="btnPattern" class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+						</button>
+						<ul id="dropdownPattern" class="dropdown-menu w-100" role="menu" aria-labelledby="btnPattern">
+						</ul>
+					</div>
 				</li>
-				<li class="nav-item">
-					<a class="nav-link" href="#">Link</a>
+				<li class="nav-item active" style="margin-left: 10px">
+					<button id="btnSound" class="btn btn-default btn-circle">
+						<img src="assets/images/soundwave.png" alt=""/>
+					</button>
 				</li>
-				<li class="nav-item">
-					<a class="nav-link disabled" href="#">Disabled</a>
+				<li class="nav-item active" style="margin-left: 10px">
+					<button id="btnSpeech" class="btn btn-default btn-circle">
+						<img src="assets/images/speech.png" alt=""/>
+					</button>
 				</li>
 			</ul>
 		</div>
