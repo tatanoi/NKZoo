@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<head>
+    <title>NK's Zoo</title>
+	<link rel="icon" href="favicon.ico">
+	<script src="https://aframe.io/releases/0.9.0/aframe.min.js"></script>
+	<script src="https://jeromeetienne.github.io/AR.js/aframe/build/aframe-ar.js"></script>
+	<script src='https://rawgit.com/donmccurdy/aframe-extras/master/dist/aframe-extras.loaders.min.js'></script>
+	<script src='https://hammerjs.github.io/dist/hammer.min.js'></script>
+	<script src="./scripts/sound.js"></script>
+	<script src="./scripts/main.js"></script>
+</head>
+
+<body style="margin: 0; overflow: hidden;">
+	<a-scene embedded
+			 vr-mode-ui="enabled: false"
+			 arjs='patternRatio: 0.8; sourceType: webcam; detectionMode: color; matrixCodeType: 4x4; debugUIEnabled: false;'
+			 >
+
+		<a-assets timeout="10000">
+			<a-asset-item id="allosaurus" src="./assets/models/animated/allosaurus/scene.gltf" preload="auto"></a-asset-item>
+			<a-asset-item id="bunny" src="./assets/models/animated/bunny/scene.gltf" preload="auto"></a-asset-item>
+			<a-asset-item id="butterfly" src="./assets/models/animated/butterfly/scene.glb" preload="auto"></a-asset-item>
+			<a-asset-item id="cow" src="./assets/models/animated/cow/scene.gltf" preload="auto"></a-asset-item>
+			<a-asset-item id="crocodile" src="./assets/models/animated/crocodile/scene.gltf" preload="auto"></a-asset-item>
+			<a-asset-item id="guppie" src="./assets/models/animated/guppie/scene.gltf" preload="auto"></a-asset-item>
+			<a-asset-item id="penguin" src="./assets/models/animated/penguin/scene.gltf" preload="auto"></a-asset-item>
+			<a-asset-item id="hippopotamus" src="./assets/models/animated/hippopotamus/scene.gltf" preload="auto"></a-asset-item>
+			<a-asset-item id="rhinoceros" src="./assets/models/animated/rhinoceros/scene.gltf" preload="auto"></a-asset-item>
+			<a-asset-item id="macaw" src="./assets/models/animated/scarlet_macaw/scene.gltf" preload="auto"></a-asset-item>
+			<a-asset-item id="shark" src="./assets/models/animated/shark/scene.gltf" preload="auto"></a-asset-item>
+			<a-asset-item id="squirrel" src="./assets/models/animated/squirrel/scene.gltf" preload="auto"></a-asset-item>
+			<a-asset-item id="whale" src="./assets/models/animated/whale/scene.gltf" preload="auto"></a-asset-item>
+			<a-asset-item id="wolf" src="./assets/models/animated/wolf/scene.gltf" preload="auto"></a-asset-item>
+        </a-assets>
+
+		<!-- handle matrix marker -->
+		<a-marker
+		type='pattern' url='./assets/markers/pattern/butterfly.patt'
+        markerhandler="entityId: butterfly-entity"
+		cursor="rayOrigin: mouse"
+		emitevents="true"
+		animation-mixer
+        raycaster="objects: #butterfly-entity"
+		>
+			<a-entity id="butterfly-entity"
+			gltf-model="#butterfly"
+			kscale="2">
+			</a-entity>
+		</a-marker>
+		<a-marker
+		type='pattern' url='./assets/markers/pattern/cow.patt'
+        markerhandler="entityId: cow-entity"
+        cursor="rayOrigin: mouse"
+        emitevents="true"
+        animation-mixer
+        raycaster="objects: #cow-entity"
+		>
+			<a-entity id="cow-entity"
+            gltf-model="#cow"
+            kscale="2">
+			</a-entity>
+		</a-marker>
+		<a-marker
+		type='pattern' url='./assets/markers/pattern/crocodile.patt'
+        markerhandler="entityId: crocodile-entity"
+        cursor="rayOrigin: mouse"
+        emitevents="true"
+        animation-mixer
+        raycaster="objects: #crocodile-entity"
+		>
+			<a-entity id="crocodile-entity"
+			gltf-model="#crocodile"
+			kscale="4">
+			</a-entity>
+		</a-marker>
+		<a-marker
+		type='pattern' url='./assets/markers/pattern/guppie.patt'
+        markerhandler="entityId: guppie-entity"
+        cursor="rayOrigin: mouse"
+        emitevents="true"
+        animation-mixer
+        raycaster="objects: #guppie-entity"
+        >
+			<a-entity id="guppie-entity"
+			gltf-model="#guppie"
+			kscale="2">
+			</a-entity>
+		</a-marker>
+		<a-marker
+		type='pattern' url='./assets/markers/pattern/penguin.patt'
+        markerhandler="entityId: penguin-entity"
+        cursor="rayOrigin: mouse"
+        emitevents="true"
+        animation-mixer="clip: PenguinArmature|Walk"
+        raycaster="objects: #penguin-entity"
+		>
+			<a-entity id="penguin-entity"
+			gltf-model="#penguin"
+			kscale="200">
+			</a-entity>
+		</a-marker>
+		<a-marker
+		type='pattern' url='./assets/markers/pattern/hippopotamus.patt'
+        markerhandler="entityId: hippopotamus-entity"
+        cursor="rayOrigin: mouse"
+        emitevents="true"
+        animation-mixer
+        raycaster="objects: #hippopotamus-entity"
+        >
+			<a-entity id="hippopotamus-entity"
+			gltf-model="#hippopotamus"
+			kscale="200">
+			</a-entity>
+		</a-marker>
+		<a-marker
+		type='pattern' url='./assets/markers/pattern/rhinoceros.patt'
+        markerhandler="entityId: rhinoceros-entity"
+        cursor="rayOrigin: mouse"
+        emitevents="true"
+        animation-mixer="clip: Armature|ArmatureAction.002"
+        raycaster="objects: #rhinoceros-entity"
+		>
+			<a-entity id="rhinoceros-entity"
+			gltf-model="#rhinoceros"
+			kscale="200">
+			</a-entity>
+		</a-marker>
+		<a-marker
+		type='pattern' url='./assets/markers/pattern/macaw.patt'
+        markerhandler="entityId: macaw-entity"
+        cursor="rayOrigin: mouse"
+        emitevents="true"
+        animation-mixer="clip: Armature|Fly01"
+        raycaster="objects: #macaw-entity"
+		>
+			<a-entity id="macaw-entity"
+			gltf-model="#macaw"
+			kscale="200">
+			</a-entity>
+		</a-marker>
+		<a-marker
+		type='pattern' url='./assets/markers/pattern/shark.patt'
+        markerhandler="entityId: shark-entity"
+        cursor="rayOrigin: mouse"
+        emitevents="true"
+        animation-mixer
+        raycaster="objects: #shark-entity"
+		>
+			<a-entity id="shark-entity"
+			gltf-model="#shark"
+			kscale="2">
+			</a-entity>
+		</a-marker>
+		<a-marker
+		type='pattern' url='./assets/markers/pattern/squirrel.patt'
+        markerhandler="entityId: squirrel-entity"
+        cursor="rayOrigin: mouse"
+        emitevents="true"
+        animation-mixer
+        raycaster="objects: #squirrel-entity"
+		>
+			<a-entity id="squirrel-entity"
+			gltf-model="#squirrel"
+			kscale="2">
+			</a-entity>
+		</a-marker>
+		<a-marker
+		type='pattern' url='./assets/markers/pattern/whale.patt'
+        markerhandler="entityId: whale-entity"
+        cursor="rayOrigin: mouse"
+        emitevents="true"
+        animation-mixer
+        raycaster="objects: #whale-entity"
+		>
+			<a-entity id="whale-entity"
+			gltf-model="#whale"
+			kscale="2">
+			</a-entity>
+		</a-marker>
+		<a-marker
+		type='pattern' url='./assets/markers/pattern/allosaurus.patt'
+        markerhandler="entityId: allosaurus-entity"
+        cursor="rayOrigin: mouse"
+        emitevents="true"
+        animation-mixer
+        raycaster="objects: #allosaurus-entity"
+		>
+			<a-entity id="allosaurus-entity"
+			gltf-model="#allosaurus"
+			kscale="2">
+			</a-entity>
+		</a-marker>
+		<a-marker
+		type='pattern' url='./assets/markers/pattern/bunny.patt'
+        markerhandler="entityId: bunny-entity"
+        cursor="rayOrigin: mouse"
+        emitevents="true"
+        animation-mixer
+        raycaster="objects: #bunny-entity"
+		>
+			<a-entity id="bunny-entity"
+			gltf-model="#bunny"
+			kscale="2">
+			</a-entity>
+		</a-marker>
+		<a-marker
+		type='pattern' url='./assets/markers/pattern/wolf.patt'
+        markerhandler="entityId: wolf-entity"
+        cursor="rayOrigin: mouse"
+        emitevents="true"
+        animation-mixer="clip: 01_Run"
+        raycaster="objects: #wolf-entity"
+		>
+			<a-entity id="wolf-entity"
+			gltf-model="#wolf"
+			kscale="2">
+			</a-entity>
+		</a-marker>
+
+		<a-entity camera></a-entity>
+	</a-scene>
+</body>
+<script src="./scripts/drag.js"></script>
+<script>
+	window.initMain();
+</script>
+</html>

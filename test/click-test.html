@@ -2,6 +2,7 @@
 <html>
 <head>
     <meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+    <title></title>
 </head>
 <script src="https://aframe.io/releases/0.9.0/aframe.min.js"></script>
 <script src="https://rawgit.com/jeromeetienne/AR.js/master/aframe/build/aframe-ar.js"></script>
@@ -19,19 +20,29 @@
         <a-asset-item id="bunny" src="../assets/models/animated/bunny/scene.gltf" preload="auto"></a-asset-item>
     </a-assets>
 
-    <a-marker markerhandler="entityId: bunny-entity" emitevents="true" cursor="rayOrigin: mouse" id="animated-marker" type='pattern' preset="hiro">
+    <a-marker markerhandler="entityId: bunny-entity"
+              animation-mixer
+              emitevents="true"
+              cursor="rayOrigin: mouse"
+              type='pattern'
+              preset="hiro">
         <a-entity
             id="bunny-entity"
             gltf-model="#bunny"
-            scale="0.05 0.05 0.05">
+            kscale="2">
         </a-entity>
     </a-marker>
 
-    <a-marker markerhandler="entityId: allosaurus-entity" emitevents="true" cursor="rayOrigin: mouse" id="animated-marker-2" type='pattern' preset="kanji">
+    <a-marker markerhandler="entityId: allosaurus-entity"
+              animation-mixer
+              emitevents="true"
+              cursor="rayOrigin: mouse"
+              type='pattern'
+              preset="kanji">
         <a-entity
             id="allosaurus-entity"
             gltf-model="#allosaurus"
-            scale="0.5 0.5 0.5">
+            kscale="2">
         </a-entity>
     </a-marker>
     <a-entity camera></a-entity>
@@ -81,5 +92,6 @@
             });
         }
     });
+    window.initMain();
 </script>
 </html>

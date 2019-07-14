@@ -83,7 +83,6 @@ registerSounds = function() {
                     window.sound.stop();
             });
         }
-    
     });
 }
 
