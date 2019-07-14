@@ -13,7 +13,7 @@
 <body style="margin: 0; overflow: hidden;">
 	<a-scene embedded
 			 vr-mode-ui="enabled: false"
-			 arjs='patternRatio: 0.8; sourceType: webcam; detectionMode: color; matrixCodeType: 4x4; debugUIEnabled: false;'
+			 arjs='patternRatio: 0.8; sourceType: webcam; debugUIEnabled: false;'
 			 >
 
 		<a-assets timeout="10000">
@@ -33,186 +33,151 @@
 			<a-asset-item id="wolf" src="./assets/models/animated/wolf/scene.gltf" preload="auto"></a-asset-item>
         </a-assets>
 
-		<!-- handle matrix marker -->
+		<a-entity id="raycaster"
+                  emitevents="true"
+				  cursor="rayOrigin: mouse"
+				  click-handler
+                  raycaster="objects: .clickable"
+        >
+		</a-entity>
+
 		<a-marker
 		type='pattern' url='./assets/markers/pattern/butterfly.patt'
-        markerhandler="entityId: butterfly-entity"
-		cursor="rayOrigin: mouse"
-		emitevents="true"
-		animation-mixer
-        raycaster="objects: #butterfly-entity"
+        marker-handler
 		>
-			<a-entity id="butterfly-entity"
+			<a-entity id="butterfly-entity" class="drag-entity"
 			gltf-model="#butterfly"
+		    animation-mixer
 			kscale="2">
 			</a-entity>
 		</a-marker>
 		<a-marker
 		type='pattern' url='./assets/markers/pattern/cow.patt'
-        markerhandler="entityId: cow-entity"
-        cursor="rayOrigin: mouse"
-        emitevents="true"
-        animation-mixer
-        raycaster="objects: #cow-entity"
+        marker-handler
 		>
-			<a-entity id="cow-entity"
+			<a-entity id="cow-entity" class="drag-entity"
             gltf-model="#cow"
+		  	animation-mixer
             kscale="2">
 			</a-entity>
 		</a-marker>
 		<a-marker
 		type='pattern' url='./assets/markers/pattern/crocodile.patt'
-        markerhandler="entityId: crocodile-entity"
-        cursor="rayOrigin: mouse"
-        emitevents="true"
-        animation-mixer
-        raycaster="objects: #crocodile-entity"
+        marker-handler
 		>
-			<a-entity id="crocodile-entity"
+			<a-entity id="crocodile-entity" class="drag-entity"
 			gltf-model="#crocodile"
+		    animation-mixer
 			kscale="4">
 			</a-entity>
 		</a-marker>
 		<a-marker
 		type='pattern' url='./assets/markers/pattern/guppie.patt'
-        markerhandler="entityId: guppie-entity"
-        cursor="rayOrigin: mouse"
-        emitevents="true"
-        animation-mixer
-        raycaster="objects: #guppie-entity"
+        marker-handler
         >
-			<a-entity id="guppie-entity"
+			<a-entity id="guppie-entity" class="drag-entity"
 			gltf-model="#guppie"
+		  	animation-mixer
 			kscale="2">
 			</a-entity>
 		</a-marker>
 		<a-marker
 		type='pattern' url='./assets/markers/pattern/penguin.patt'
-        markerhandler="entityId: penguin-entity"
-        cursor="rayOrigin: mouse"
-        emitevents="true"
-        animation-mixer="clip: PenguinArmature|Walk"
-        raycaster="objects: #penguin-entity"
+        marker-handler
 		>
-			<a-entity id="penguin-entity"
+			<a-entity id="penguin-entity" class="drag-entity"
+		  	animation-mixer="clip: PenguinArmature|Walk"
 			gltf-model="#penguin"
 			kscale="200">
 			</a-entity>
 		</a-marker>
 		<a-marker
 		type='pattern' url='./assets/markers/pattern/hippopotamus.patt'
-        markerhandler="entityId: hippopotamus-entity"
-        cursor="rayOrigin: mouse"
-        emitevents="true"
-        animation-mixer
-        raycaster="objects: #hippopotamus-entity"
+        marker-handler
         >
-			<a-entity id="hippopotamus-entity"
+			<a-entity id="hippopotamus-entity" class="drag-entity"
 			gltf-model="#hippopotamus"
+		  	animation-mixer
 			kscale="200">
 			</a-entity>
 		</a-marker>
 		<a-marker
 		type='pattern' url='./assets/markers/pattern/rhinoceros.patt'
-        markerhandler="entityId: rhinoceros-entity"
-        cursor="rayOrigin: mouse"
-        emitevents="true"
-        animation-mixer="clip: Armature|ArmatureAction.002"
-        raycaster="objects: #rhinoceros-entity"
+        marker-handler
 		>
-			<a-entity id="rhinoceros-entity"
+			<a-entity id="rhinoceros-entity" class="drag-entity"
 			gltf-model="#rhinoceros"
+		  	animation-mixer="clip: Armature|ArmatureAction.002"
 			kscale="200">
 			</a-entity>
 		</a-marker>
 		<a-marker
 		type='pattern' url='./assets/markers/pattern/macaw.patt'
-        markerhandler="entityId: macaw-entity"
-        cursor="rayOrigin: mouse"
-        emitevents="true"
-        animation-mixer="clip: Armature|Fly01"
-        raycaster="objects: #macaw-entity"
+        marker-handler
 		>
-			<a-entity id="macaw-entity"
+			<a-entity id="macaw-entity" class="drag-entity"
 			gltf-model="#macaw"
+		  	animation-mixer="clip: Armature|Fly01"
 			kscale="200">
 			</a-entity>
 		</a-marker>
 		<a-marker
 		type='pattern' url='./assets/markers/pattern/shark.patt'
-        markerhandler="entityId: shark-entity"
-        cursor="rayOrigin: mouse"
-        emitevents="true"
-        animation-mixer
-        raycaster="objects: #shark-entity"
+        marker-handler
 		>
-			<a-entity id="shark-entity"
+			<a-entity id="shark-entity" class="drag-entity"
 			gltf-model="#shark"
+		  	animation-mixer
 			kscale="2">
 			</a-entity>
 		</a-marker>
 		<a-marker
 		type='pattern' url='./assets/markers/pattern/squirrel.patt'
-        markerhandler="entityId: squirrel-entity"
-        cursor="rayOrigin: mouse"
-        emitevents="true"
-        animation-mixer
-        raycaster="objects: #squirrel-entity"
+        marker-handler
 		>
-			<a-entity id="squirrel-entity"
+			<a-entity id="squirrel-entity" class="drag-entity"
 			gltf-model="#squirrel"
+		  	animation-mixer
 			kscale="2">
 			</a-entity>
 		</a-marker>
 		<a-marker
 		type='pattern' url='./assets/markers/pattern/whale.patt'
-        markerhandler="entityId: whale-entity"
-        cursor="rayOrigin: mouse"
-        emitevents="true"
-        animation-mixer
-        raycaster="objects: #whale-entity"
+        marker-handler
 		>
-			<a-entity id="whale-entity"
+			<a-entity id="whale-entity" class="drag-entity"
 			gltf-model="#whale"
+		  	animation-mixer
 			kscale="2">
 			</a-entity>
 		</a-marker>
 		<a-marker
 		type='pattern' url='./assets/markers/pattern/allosaurus.patt'
-        markerhandler="entityId: allosaurus-entity"
-        cursor="rayOrigin: mouse"
-        emitevents="true"
-        animation-mixer
-        raycaster="objects: #allosaurus-entity"
+        marker-handler
 		>
-			<a-entity id="allosaurus-entity"
+			<a-entity id="allosaurus-entity" class="drag-entity"
 			gltf-model="#allosaurus"
+		  	animation-mixer
 			kscale="2">
 			</a-entity>
 		</a-marker>
 		<a-marker
 		type='pattern' url='./assets/markers/pattern/bunny.patt'
-        markerhandler="entityId: bunny-entity"
-        cursor="rayOrigin: mouse"
-        emitevents="true"
-        animation-mixer
-        raycaster="objects: #bunny-entity"
+        marker-handler
 		>
-			<a-entity id="bunny-entity"
+			<a-entity id="bunny-entity" class="drag-entity"
 			gltf-model="#bunny"
+		  	animation-mixer
 			kscale="2">
 			</a-entity>
 		</a-marker>
 		<a-marker
 		type='pattern' url='./assets/markers/pattern/wolf.patt'
-        markerhandler="entityId: wolf-entity"
-        cursor="rayOrigin: mouse"
-        emitevents="true"
-        animation-mixer="clip: 01_Run"
-        raycaster="objects: #wolf-entity"
+        marker-handler
 		>
-			<a-entity id="wolf-entity"
+			<a-entity id="wolf-entity" class="drag-entity"
 			gltf-model="#wolf"
+		  	animation-mixer="clip: 01_Run"
 			kscale="2">
 			</a-entity>
 		</a-marker>

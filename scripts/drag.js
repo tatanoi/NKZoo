@@ -24,28 +24,36 @@ hammertime.on('pan', (ev) => {
 });
 
 /////////////////////////////////////////////////////////////////////////////////
-
-AFRAME.registerComponent('markerhandler', {
-    schema: {
-        entityId: {type: 'string', default: ''}
-    },
+AFRAME.registerComponent('marker-handler', {
     init: function () {
-        const aEntity = document.querySelector(`#${this.data.entityId}`);
-        aEntity.setAttribute('visible', "false");
-        this.el.addEventListener('markerFound', function (ev) {
-            aEntity.setAttribute('visible', "true");
+        let entity = this.el.querySelector(`.drag-entity`);
+        let raycaster = document.querySelector('#raycaster');
+
+        this.el.addEventListener('markerFound', () => {
+            entity.classList.add('clickable');
+            raycaster.components.raycaster.refreshObjects();
         });
-        this.el.addEventListener('markerLost', function (ev) {
-            aEntity.setAttribute('visible', "false");
+        this.el.addEventListener('markerLost', () => {
+            entity.classList.remove('clickable');
+            raycaster.components.raycaster.refreshObjects();
         });
-        this.el.addEventListener('click', function (ev) {
+    }
+});
+
+AFRAME.registerComponent('click-handler', {
+    init: function () {
+        let entities = document.querySelectorAll('.drag-entity') || [];
+        this.el.addEventListener('click', (ev) => {
             let intersectedElement = ev && ev.detail && ev.detail.intersectedEl;
-            let visible = aEntity.getAttribute('visible');
-            if (aEntity && intersectedElement === aEntity && visible) {
-                targetEl = aEntity;
-                console.log(`id=${aEntity.getAttribute('id')} | visible=${aEntity.object3D.visible}`);
+            for (let i = 0; i < entities.length; i++) {
+                let entity = entities[i];
+                if (entity && intersectedElement === entity) {
+                    console.log(entity.getAttribute('id'));
+                    targetEl = entity;
+                    break;
+                }
             }
-        });
+        })
     }
 });
 
