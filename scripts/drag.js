@@ -1,8 +1,8 @@
 //////////////////////////////////////////////////////////////////////////////
 
-const patternPath = '../assets/markers/pattern';
-const speechPath = '../assets/sounds/speech';
-const soundPath = '../assets/sounds';
+const patternPath = './../assets/markers/pattern';
+const speechPath = './../assets/sounds/speech';
+const soundPath = './../assets/sounds';
 
 const models = [
     'allosaurus',
