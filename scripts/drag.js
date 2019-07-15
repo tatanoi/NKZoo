@@ -4,7 +4,7 @@ const patternPath = '../assets/markers/pattern';
 const speechPath = '../assets/sounds/speech';
 const soundPath = '../assets/sounds';
 
-const animals = [
+const models = [
     'allosaurus',
     'bunny',
     'butterfly',
@@ -72,17 +72,17 @@ function initSound() {
         }
     }
 
-    for (let i = 0; i < animals.length; i++) {
-        let url = `${speechPath}/${animals[i]}.mp3`;
+    for (let i = 0; i < models.length; i++) {
+        let url = `${speechPath}/${models[i]}.mp3`;
         audioLoader.load(url, buffer => {
-            speeches[animals[i]] = buffer;
-            console.log(url);
+            speeches[models[i]] = buffer;
         });
     }
 }
 
 initSound();
 
+let btnReset = document.querySelector('#btnReset');
 let btnSound = document.querySelector('#btnSound');
 let btnSpeech = document.querySelector('#btnSpeech');
 let btnPattern = document.querySelector('#btnPattern');
@@ -91,6 +91,23 @@ let dropdownPattern = document.querySelector('#dropdownPattern');
 let targetEl = document.querySelector(`#wolf-entity`) || null;
 let currentSpeech = null;
 let currentSound = null;
+
+btnReset.addEventListener('click', () => {
+    if (!btnReset || !targetEl) return;
+    let span = targetEl.getAttribute('kscale');
+    let mesh = targetEl.getObject3D('mesh');
+    if (mesh) {
+        let bbox = new THREE.Box3().setFromObject(mesh);
+        let scale = span / bbox.getSize().length();
+        targetEl.object3D.scale.set(scale, scale, scale);
+        targetEl.object3D.position.set(0, 0, 0);
+        targetEl.object3D.rotation.set(
+            THREE.Math.degToRad(0),
+            THREE.Math.degToRad(0),
+            THREE.Math.degToRad(0)
+        );
+    }
+});
 
 btnSpeech.addEventListener('click', () => {
     if (!currentSpeech) return;
@@ -117,7 +134,7 @@ btnSound.addEventListener('click', () => {
     }
 });
 
-setTimeout(() => updateTarget(), 5000);
+// setTimeout(() => updateTarget(), 5000);
 
 function onClickLi(name) {
     let entity = document.querySelector(`#${name}-entity`);
@@ -142,22 +159,10 @@ function updateTarget() {
     if (!targetEl) {
         console.log('Target not found');
     }
-    //
     let entityName = targetEl.getAttribute('id').replace('-entity', '');
-    let speech = speeches[entityName] || null;
-    let sound = sounds[entityName] || null;
-
-    if (btnPattern) {
-        btnPattern.innerHTML = `<img src="${patternPath}/${entityName}.png" style="width:25px;height:25px" alt="">`
-    }
-
-    if (btnSpeech) {
-        currentSpeech = speech;
-    }
-
-    if (btnSound) {
-        currentSound = sound;
-    }
+    currentSpeech = speeches[entityName] || null;
+    currentSound = sounds[entityName] || null;
+    btnPattern.innerHTML = `<img src="${patternPath}/${entityName}.png" style="width:25px;height:25px" alt="">`;
 }
 
 //////////////////////////////////////////////////////////////////////////////
@@ -188,6 +193,27 @@ hammertime.on('pan', (ev) => {
 });
 
 /////////////////////////////////////////////////////////////////////////////////
+
+
+AFRAME.registerComponent('kscale', {
+    schema: {type: 'number', default: 1},
+    init: function () {
+        this.scale();
+        this.el.addEventListener('object3dset', () => this.scale());
+    },
+    scale: function () {
+        let span = this.data;
+        let mesh = this.el.getObject3D('mesh');
+
+        if (!mesh) return;
+
+        let bbox = new THREE.Box3().setFromObject(mesh);
+
+        // Normalize scale.
+        let scale = span / bbox.getSize().length();
+        mesh.scale.set(scale, scale, scale);
+    },
+});
 
 AFRAME.registerComponent('marker-handler', {
     init: function () {
@@ -227,4 +253,3 @@ AFRAME.registerComponent('click-handler', {
 });
 
 /////////////////////////////////////////////////////////////////////////////////
-
