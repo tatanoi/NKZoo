@@ -1,3 +1,230 @@
+let reactionMap = {
+    "allosaurus": {
+        "allosaurus": "emo-angry",
+        "bunny": "emo-evil",
+        "butterfly": "emo-happy",
+        "cow": "emo-evil",
+        "crocodile": "emo-angry",
+        "guppie": "emo-evil",
+        "penguin": "emo-evil",
+        "hippopotamus": "emo-angry",
+        "rhinoceros": "emo-angry",
+        "macaw": "emo-evil",
+        "shark": "emo-angry",
+        "squirrel": "emo-evil",
+        "whale": "emo-speechless",
+        "wolf": "emo-angry"
+    },
+    "bunny": {
+        "allosaurus": "emo-crying",
+        "bunny": "emo-happy",
+        "butterfly": "emo-happy",
+        "cow": "emo-fear",
+        "crocodile": "emo-crying",
+        "guppie": "emo-surprised",
+        "penguin": "emo-surprised",
+        "hippopotamus": "emo-fear",
+        "rhinoceros": "emo-fear",
+        "macaw": "emo-normal",
+        "shark": "emo-crying",
+        "squirrel": "emo-happy",
+        "whale": "emo-surprised",
+        "wolf": "emo-crying"
+    },
+    "butterfly": {
+        "allosaurus": "emo-happy",
+        "bunny": "emo-happy",
+        "butterfly": "emo-happy",
+        "cow": "emo-happy",
+        "crocodile": "emo-happy",
+        "guppie": "emo-happy",
+        "penguin": "emo-happy",
+        "hippopotamus": "emo-happy",
+        "rhinoceros": "emo-happy",
+        "macaw": "emo-happy",
+        "shark": "emo-happy",
+        "squirrel": "emo-happy",
+        "whale": "emo-happy",
+        "wolf": "emo-happy"
+    },
+    "cow": {
+        "allosaurus": "emo-crying",
+        "bunny": "emo-normal",
+        "butterfly": "emo-happy",
+        "cow": "emo-happy",
+        "crocodile": "emo-fear",
+        "guppie": "emo-dizzy",
+        "penguin": "emo-normal",
+        "hippopotamus": "emo-normal",
+        "rhinoceros": "emo-normal",
+        "macaw": "emo-dizzy",
+        "shark": "emo-fear",
+        "squirrel": "emo-normal",
+        "whale": "emo-speechless",
+        "wolf": "emo-fear"
+    },
+    "crocodile": {
+        "allosaurus": "emo-fear",
+        "bunny": "emo-evil",
+        "butterfly": "emo-happy",
+        "cow": "emo-evil",
+        "crocodile": "emo-normal",
+        "guppie": "emo-evil",
+        "penguin": "emo-evil",
+        "hippopotamus": "emo-fear",
+        "rhinoceros": "emo-fear",
+        "macaw": "emo-dizzy",
+        "shark": "emo-angry",
+        "squirrel": "emo-evil",
+        "whale": "emo-speechless",
+        "wolf": "emo-angry"
+    },
+    "guppie": {
+        "allosaurus": "emo-crying",
+        "bunny": "emo-normal",
+        "butterfly": "emo-happy",
+        "cow": "emo-normal",
+        "crocodile": "emo-crying",
+        "guppie": "emo-normal",
+        "penguin": "emo-crying",
+        "hippopotamus": "emo-fear",
+        "rhinoceros": "emo-fear",
+        "macaw": "emo-fear",
+        "shark": "emo-crying",
+        "squirrel": "emo-normal",
+        "whale": "emo-fear",
+        "wolf": "emo-crying"
+    },
+    "penguin": {
+        "allosaurus": "emo-crying",
+        "bunny": "emo-normal",
+        "butterfly": "emo-happy",
+        "cow": "emo-normal",
+        "crocodile": "emo-normal",
+        "guppie": "emo-happy",
+        "penguin": "emo-happy",
+        "hippopotamus": "emo-surprised",
+        "rhinoceros": "emo-surprised",
+        "macaw": "emo-dizzy",
+        "shark": "emo-crying",
+        "squirrel": "emo-dizzy",
+        "whale": "emo-surprised",
+        "wolf": "emo-fear"
+    },
+    "hippopotamus": {
+        "allosaurus": "emo-angry",
+        "bunny": "emo-normal",
+        "butterfly": "emo-happy",
+        "cow": "emo-speechless",
+        "crocodile": "emo-normal",
+        "guppie": "emo-normal",
+        "penguin": "emo-normal",
+        "hippopotamus": "emo-normal",
+        "rhinoceros": "emo-normal",
+        "macaw": "emo-normal",
+        "shark": "emo-speechless",
+        "squirrel": "emo-normal",
+        "whale": "emo-speechless",
+        "wolf": "emo-speechless"
+    },
+    "rhinoceros": {
+        "allosaurus": "emo-angry",
+        "bunny": "emo-normal",
+        "butterfly": "emo-happy",
+        "cow": "emo-normal",
+        "crocodile": "emo-normal",
+        "guppie": "emo-normal",
+        "penguin": "emo-normal",
+        "hippopotamus": "emo-normal",
+        "rhinoceros": "emo-normal",
+        "macaw": "emo-normal",
+        "shark": "emo-normal",
+        "squirrel": "emo-normal",
+        "whale": "emo-normal",
+        "wolf": "emo-normal"
+    },
+    "macaw": {
+        "allosaurus": "emo-normal",
+        "bunny": "emo-normal",
+        "butterfly": "emo-happy",
+        "cow": "emo-surprised",
+        "crocodile": "emo-fear",
+        "guppie": "emo-normal",
+        "penguin": "emo-normal",
+        "hippopotamus": "emo-normal",
+        "rhinoceros": "emo-fear",
+        "macaw": "emo-normal",
+        "shark": "emo-crying",
+        "squirrel": "emo-happy",
+        "whale": "emo-speechless",
+        "wolf": "emo-fear"
+    },
+    "shark": {
+        "allosaurus": "emo-angry",
+        "bunny": "emo-evil",
+        "butterfly": "emo-surprised",
+        "cow": "emo-evil",
+        "crocodile": "emo-angry",
+        "guppie": "emo-evil",
+        "penguin": "emo-evil",
+        "hippopotamus": "emo-angry",
+        "rhinoceros": "emo-fear",
+        "macaw": "emo-evil",
+        "shark": "emo-angry",
+        "squirrel": "emo-evil",
+        "whale": "emo-fear",
+        "wolf": "emo-angry"
+    },
+    "squirrel": {
+        "allosaurus": "emo-crying",
+        "bunny": "emo-happy",
+        "butterfly": "emo-happy",
+        "cow": "emo-fear",
+        "crocodile": "emo-crying",
+        "guppie": "emo-normal",
+        "penguin": "emo-dizzy",
+        "hippopotamus": "emo-fear",
+        "rhinoceros": "emo-fear",
+        "macaw": "emo-dizzy",
+        "shark": "emo-crying",
+        "squirrel": "emo-normal",
+        "whale": "emo-surprised",
+        "wolf": "emo-crying"
+    },
+    "whale": {
+        "allosaurus": "emo-speechless",
+        "bunny": "emo-normal",
+        "butterfly": "emo-surprised",
+        "cow": "emo-normal",
+        "crocodile": "emo-normal",
+        "guppie": "emo-normal",
+        "penguin": "emo-normal",
+        "hippopotamus": "emo-surprised",
+        "rhinoceros": "emo-surprised",
+        "macaw": "emo-normal",
+        "shark": "emo-normal",
+        "squirrel": "emo-normal",
+        "whale": "emo-normal",
+        "wolf": "emo-normal"
+    },
+    "wolf": {
+        "allosaurus": "emo-fear",
+        "bunny": "emo-evil",
+        "butterfly": "emo-happy",
+        "cow": "emo-evil",
+        "crocodile": "emo-angry",
+        "guppie": "emo-evil",
+        "penguin": "emo-evil",
+        "hippopotamus": "emo-angry",
+        "rhinoceros": "emo-fear",
+        "macaw": "emo-evil",
+        "shark": "emo-angry",
+        "squirrel": "emo-evil",
+        "whale": "emo-surprised",
+        "wolf": "emo-happy"
+    }
+}; // get from excel
+
 //////////////////////////////////////////////////////////////////////////////
 
 const patternPath = './assets/markers/pattern';
@@ -292,7 +519,7 @@ function updateEmo() {
         if (elA && elB) {
             let emoA = elA.querySelector('.emo');
             let emoB = elB.querySelector('.emo');
-            let result = getReactions() || [];
+            let result = getReactions(elA, elB) || [];
             if (result && result.length === 2) {
                 emoA.setAttribute('src', `#${result[0]}`);
                 emoB.setAttribute('src', `#${result[1]}`);
@@ -301,7 +528,6 @@ function updateEmo() {
     }
 }
 
-let reactionMap = {}; // get from excel
 function getReactions(entityA, entityB) {
     let a = entityA.getAttribute('id').replace('-entity', '');
     let b = entityB.getAttribute('id').replace('-entity', '');
