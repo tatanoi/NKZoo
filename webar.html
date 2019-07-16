@@ -2,6 +2,7 @@
 <head>
     <title>NK's Zoo</title>
 	<link rel="icon" href="favicon.ico">
+	<meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
 	<script src="https://aframe.io/releases/0.9.0/aframe.min.js"></script>
 	<script src="https://jeromeetienne.github.io/AR.js/aframe/build/aframe-ar.js"></script>
 	<script src='https://rawgit.com/donmccurdy/aframe-extras/master/dist/aframe-extras.loaders.min.js'></script>
@@ -81,7 +82,7 @@
 		<a-assets timeout="10000">
 			<a-asset-item id="allosaurus" src="./assets/models/animated/allosaurus.glb" preload="auto"></a-asset-item>
 			<a-asset-item id="bunny" src="./assets/models/animated/bunny.glb" preload="auto"></a-asset-item>
-			<a-asset-item id="butterfly" src="./assets/models/animated/butterfly/scene.glb" preload="auto"></a-asset-item>
+			<a-asset-item id="butterfly" src="./assets/models/animated/butterfly.glb" preload="auto"></a-asset-item>
 			<a-asset-item id="cow" src="./assets/models/animated/cow.glb" preload="auto"></a-asset-item>
 			<a-asset-item id="crocodile" src="./assets/models/animated/crocodile.glb" preload="auto"></a-asset-item>
 			<a-asset-item id="guppie" src="./assets/models/animated/guppie.glb" preload="auto"></a-asset-item>
@@ -89,7 +90,7 @@
 			<a-asset-item id="hippopotamus" src="./assets/models/animated/hippopotamus.glb" preload="auto"></a-asset-item>
 			<a-asset-item id="rhinoceros" src="./assets/models/animated/rhinoceros.glb" preload="auto"></a-asset-item>
 			<a-asset-item id="macaw" src="./assets/models/animated/scarlet_macaw.glb" preload="auto"></a-asset-item>
-			<a-asset-item id="shark" src="./assets/models/animated/shark2.glb" preload="auto"></a-asset-item>
+			<a-asset-item id="shark2" src="./assets/models/animated/shark2.glb" preload="auto"></a-asset-item>
 			<a-asset-item id="squirrel" src="./assets/models/animated/squirrel.glb" preload="auto"></a-asset-item>
 			<a-asset-item id="whale" src="./assets/models/animated/whale.glb" preload="auto"></a-asset-item>
 			<a-asset-item id="wolf" src="./assets/models/animated/wolf.glb" preload="auto"></a-asset-item>
@@ -199,7 +200,7 @@
         marker-handler
 		>
 			<a-entity id="shark-entity" class="drag-entity"
-			gltf-model="#shark"
+			gltf-model="#shark2"
 		  	animation-mixer
 			kscale="2">
 			</a-entity>

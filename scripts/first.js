@@ -1,1 +1,1 @@
-window.location = "./webar"
+window.location = "./webar.html"
