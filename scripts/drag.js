@@ -1,8 +1,8 @@
 //////////////////////////////////////////////////////////////////////////////
 
-const patternPath = './../assets/markers/pattern';
-const speechPath = './../assets/sounds/speech';
-const soundPath = './../assets/sounds';
+const patternPath = './assets/markers/pattern';
+const speechPath = './assets/sounds/speech';
+const soundPath = './assets/sounds';
 
 const models = [
     'allosaurus',
@@ -43,7 +43,7 @@ let speechListener = new THREE.Audio(new THREE.AudioListener());
 speechListener.setVolume(1);
 speechListener.setLoop(false);
 speechListener.onEnded = () => {
-    btnSpeech.innerHTML = `<img src="../assets/images/speech.png" alt=""/>`;
+    btnSpeech.innerHTML = `<img src="./assets/images/speech.png" alt=""/>`;
     speechListener.stop();
 };
 
@@ -113,11 +113,11 @@ btnSpeech.addEventListener('click', () => {
     if (!currentSpeech) return;
     if (speechListener.isPlaying) {
         speechListener.stop();
-        btnSpeech.innerHTML = `<img src="../assets/images/speech.png" alt=""/>`;
+        btnSpeech.innerHTML = `<img src="./assets/images/speech.png" alt=""/>`;
     } else if (currentSpeech) {
         speechListener.setBuffer(currentSpeech);
         speechListener.play();
-        btnSpeech.innerHTML = `<img src="../assets/images/silence.png" alt=""/>`;
+        btnSpeech.innerHTML = `<img src="./assets/images/silence.png" alt=""/>`;
     }
 });
 
