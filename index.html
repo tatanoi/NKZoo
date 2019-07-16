@@ -6,11 +6,102 @@
 	<script src="https://rawcdn.githack.com/bestiejs/platform.js/efa9ac0e4f4aec19f10280c90fcf8dd47fa67a2f/platform.js"></script>
 
 	<script src="./scripts/first.js"></script>
-	
+	<style>
+		.fill-screen {
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 100vw;
+			height: 100vh;
+			background: white;
+		}
+
+		.mid-anchor {
+			display: block;
+			position: absolute;
+			left: 50%;
+			top: 50%;
+		}
+
+		.mid-anchor-content {
+			display: block;
+			position: relative;
+			left: -50%;
+			top: -50%;
+			text-align: center;
+		}
+
+		.block-center {
+			display: block;
+			margin-left: auto;
+			margin-right: auto;
+		}
+
+		.bottom-content {
+			display: block;
+			position: fixed;
+			bottom: 10px;
+			text-align: center;
+		}
+
+		.txt-content {
+			font-size: 5vw;
+		}
+		.txt-footer {
+			font-size: 4vw;
+		}
+	</style>
 </head>
 <body>
-	<div>
-		<textarea>chào mừng</textarea>
+
+	<!-- dialog thứ 3 -->
+	<div name="dialog" class="fill-screen">
+		<div class="mid-anchor">
+			<div class="mid-anchor-content txt-content">
+				Bạn đã sẵn sàng
+			</div>
+			<button class="mid-anchor-content block-center txt-footer"
+					style="margin-top: 24px"
+					onclick="window.clickFinal()"
+					>
+						Vào chơi
+					</button>
+			
+		</div>
+	</div>
+
+	<!-- dialog thứ 2 -->
+	<div name="dialog" class="fill-screen">
+		<div class="mid-anchor">
+			<div class="mid-anchor-content txt-content">
+				Đây là hướng dẫn sử dụng
+			</div>
+			<button class="mid-anchor-content block-center txt-footer"
+					style="margin-top: 24px"
+					onclick="window.clickNext()"
+					>
+						Tiếp tục
+					</button>
+			
+		</div>
+	</div>
+
+	<!-- dialog đầu tiên -->
+	<div name="dialog" id="final" class="fill-screen">
+		<div class="mid-anchor">
+			<div id="content" class="mid-anchor-content txt-content">
+				Helllo ngày mới
+			</div>
+			<button id="btn-start" class="mid-anchor-content block-center txt-footer"
+					style="display: none; margin-top: 24px"
+					onclick="window.clickNext()"
+					>
+						Tiếp tục
+					</button>
+			
+			<div id="footer" class="bottom-content txt-footer"> a a </div>
+		</div>
 	</div>
 	
 </body>
+<script src="./scripts/dialogHandler.js"></script>
