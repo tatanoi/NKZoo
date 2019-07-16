@@ -82,6 +82,7 @@ function initSound() {
 
 initSound();
 
+let btnEmo = document.querySelector('#btnEmo');
 let btnReset = document.querySelector('#btnReset');
 let btnSound = document.querySelector('#btnSound');
 let btnSpeech = document.querySelector('#btnSpeech');
@@ -91,6 +92,7 @@ let dropdownPattern = document.querySelector('#dropdownPattern');
 let targetEl = document.querySelector(`#wolf-entity`) || null;
 let currentSpeech = null;
 let currentSound = null;
+let allowEmo = false;
 
 btnReset.addEventListener('click', () => {
     if (!btnReset || !targetEl) return;
@@ -134,7 +136,16 @@ btnSound.addEventListener('click', () => {
     }
 });
 
-// setTimeout(() => updateTarget(), 5000);
+btnEmo.addEventListener('click', () => {
+    allowEmo = !allowEmo;
+    if (allowEmo) {
+        btnEmo.innerHTML = `<img src="./assets/images/noemo.png" alt=""/>`;
+    } else {
+        btnEmo.innerHTML = `<img src="./assets/images/emo.png" alt=""/>`;
+    }
+    updateEmo();
+});
+
 
 function onClickLi(name) {
     let entity = document.querySelector(`#${name}-entity`);
@@ -150,7 +161,7 @@ function updateDropdown() {
     for (let i = 0; i < visibleEntities.length; i++) {
         let entity = visibleEntities[i];
         let name = entity.getAttribute('id').replace('-entity', '');
-        dropdownInnerHtml += `<li><img onclick="onClickLi('${name}')" src='${patternPath}/${name}.png' style='width:40px;height:40px' alt=''></li>`;
+        dropdownInnerHtml += `<li><img onclick="onClickLi('${name}')" src='${patternPath}/${name}.png' style='width:40px;height:40px' alt=''> ${name}</li>`;
     }
     dropdownPattern.innerHTML = dropdownInnerHtml;
 }
@@ -223,12 +234,14 @@ AFRAME.registerComponent('marker-handler', {
         this.el.addEventListener('markerFound', () => {
             entity.classList.add('clickable');
             updateDropdown();
+            updateEmo();
             raycaster.components.raycaster.refreshObjects();
 
         });
         this.el.addEventListener('markerLost', () => {
             entity.classList.remove('clickable');
             updateDropdown();
+            updateEmo();
             raycaster.components.raycaster.refreshObjects();
         });
     }
@@ -253,3 +266,49 @@ AFRAME.registerComponent('click-handler', {
 });
 
 /////////////////////////////////////////////////////////////////////////////////
+
+function initEmoticons() {
+    let entities = document.querySelectorAll('.drag-entity');
+    for (let i = 0; i < entities.length; i++) {
+        let entity = entities[i];
+        entity.innerHTML = `<a-image class="emo" src="" kscale="0.5" position="0 1 0" visible="false"></a-image>`;
+    }
+}
+
+function updateEmo() {
+    let emoElements = document.querySelectorAll('.emo') || [];
+    for (let i = 0; i < emoElements.length; i++) {
+        let el = emoElements[i];
+        if (el) {
+            el.setAttribute('src', `#emo-normal`);
+            el.setAttribute('visible', JSON.stringify(allowEmo));
+        }
+    }
+
+    let entityElements = document.querySelectorAll('.clickable') || [];
+    if (entityElements.length === 2) {
+        let elA = entityElements[0];
+        let elB = entityElements[1];
+        if (elA && elB) {
+            let emoA = elA.querySelector('.emo');
+            let emoB = elB.querySelector('.emo');
+            let result = getReactions() || [];
+            if (result && result.length === 2) {
+                emoA.setAttribute('src', `#${result[0]}`);
+                emoB.setAttribute('src', `#${result[1]}`);
+            }
+        }
+    }
+}
+
+let reactionMap = {}; // get from excel
+function getReactions(entityA, entityB) {
+    let a = entityA.getAttribute('id').replace('-entity', '');
+    let b = entityB.getAttribute('id').replace('-entity', '');
+    let emoA = reactionMap[a] && reactionMap[a][b] ? reactionMap[a][b] : 'emo-normal';
+    let emoB = reactionMap[a] && reactionMap[b][a] ? reactionMap[b][a] : 'emo-normal';
+    return [emoA, emoB];
+}
+
+initEmoticons();
+updateEmo();

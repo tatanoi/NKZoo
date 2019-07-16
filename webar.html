@@ -37,6 +37,10 @@
 			-ms-transform: translate(-50%, -50%);
 			transform: translate(-50%, -50%);
 		}
+
+		.emo {
+			background-color: transparent;
+		}
 	</style>
 </head>
 
@@ -67,6 +71,11 @@
 					</button>
 				</li>
 				<li class="nav-item active" style="margin-left: 10px">
+					<button id="btnEmo" class="btn btn-default btn-circle">
+						<img src="assets/images/emo.png" alt=""/>
+					</button>
+				</li>
+				<li class="nav-item active" style="margin-left: 10px">
 					<button id="btnReset" class="btn btn-default btn-circle">
 						<img src="assets/images/reset.png" alt=""/>
 					</button>
@@ -77,8 +86,8 @@
 
 	<a-scene embedded
 			 vr-mode-ui="enabled: false"
-			 arjs='patternRatio: 0.8; sourceType: webcam; debugUIEnabled: false;'
-			 >
+			 arjs='patternRatio: 0.8; debugUIEnabled: false;'
+	>
 		<a-assets timeout="10000">
 			<a-asset-item id="allosaurus" src="./assets/models/animated/allosaurus.glb" preload="auto"></a-asset-item>
 			<a-asset-item id="bunny" src="./assets/models/animated/bunny.glb" preload="auto"></a-asset-item>
@@ -95,7 +104,13 @@
 			<a-asset-item id="whale" src="./assets/models/animated/whale.glb" preload="auto"></a-asset-item>
 			<a-asset-item id="wolf" src="./assets/models/animated/wolf.glb" preload="auto"></a-asset-item>
 			<a-asset-item id="carrot" src="./assets/models/others/carrot.glb" preload="auto"></a-asset-item>
+
+			<img id="emo-sad" src="./assets/emoticons/sad.png" alt=""/>
+			<img id="emo-smile" src="./assets/emoticons/smile.png" alt=""/>
+			<img id="emo-normal" src="./assets/emoticons/normal.png" alt=""/>
         </a-assets>
+
+
 
 		<a-entity id="raycaster"
                   emitevents="true"
@@ -105,16 +120,16 @@
         >
 		</a-entity>
 
-		<a-marker
-		type='pattern' url='./assets/markers/pattern/carrot.patt'
-		marker-handler
-		>
-			<a-entity id="carrot-entity" class="drag-entity"
-			gltf-model="#carrot"
-			animation-mixer
-			kscale="2">
-			</a-entity>
-		</a-marker>
+<!--		<a-marker-->
+<!--		type='pattern' url='./assets/markers/pattern/carrot.patt'-->
+<!--		marker-handler-->
+<!--		>-->
+<!--			<a-entity id="carrot-entity" class="drag-entity"-->
+<!--			gltf-model="#carrot"-->
+<!--			animation-mixer-->
+<!--			kscale="2">-->
+<!--			</a-entity>-->
+<!--		</a-marker>-->
 		<a-marker
 		type='pattern' url='./assets/markers/pattern/butterfly.patt'
         marker-handler
@@ -123,6 +138,7 @@
 			gltf-model="#butterfly"
 		    animation-mixer
 			kscale="2">
+				<a-image class="emo" src="#emo-smile" kscale="0.5" position="0 1 0" visible="true"></a-image>
 			</a-entity>
 		</a-marker>
 		<a-marker
@@ -133,6 +149,7 @@
             gltf-model="#cow"
 		  	animation-mixer
             kscale="2">
+				<a-image class="emo" src="#emo-smile" kscale="0.5" position="0 1 0" visible="true"></a-image>
 			</a-entity>
 		</a-marker>
 		<a-marker
@@ -143,6 +160,7 @@
 			gltf-model="#crocodile"
 		    animation-mixer
 			kscale="4">
+				<a-image class="emo" src="#emo-smile" kscale="0.5" position="0 1 0" visible="true"></a-image>
 			</a-entity>
 		</a-marker>
 		<a-marker
@@ -153,6 +171,7 @@
 			gltf-model="#guppie"
 		  	animation-mixer
 			kscale="2">
+				<a-image class="emo" src="#emo-smile" kscale="0.5" position="0 1 0" visible="true"></a-image>
 			</a-entity>
 		</a-marker>
 		<a-marker
@@ -163,6 +182,7 @@
 		  	animation-mixer="clip: PenguinArmature|Walk"
 			gltf-model="#penguin"
 			kscale="200">
+				<a-image class="emo" src="#emo-smile" kscale="0.5" position="0 1 0" visible="true"></a-image>
 			</a-entity>
 		</a-marker>
 		<a-marker
@@ -173,6 +193,7 @@
 			gltf-model="#hippopotamus"
 		  	animation-mixer
 			kscale="200">
+				<a-image class="emo" src="#emo-smile" kscale="0.5" position="0 1 0" visible="true"></a-image>
 			</a-entity>
 		</a-marker>
 		<a-marker
@@ -183,6 +204,7 @@
 			gltf-model="#rhinoceros"
 		  	animation-mixer="clip: Armature|ArmatureAction.002"
 			kscale="200">
+				<a-image class="emo" src="#emo-smile" kscale="0.5" position="0 1 0" visible="true"></a-image>
 			</a-entity>
 		</a-marker>
 		<a-marker
@@ -193,6 +215,7 @@
 			gltf-model="#macaw"
 		  	animation-mixer="clip: Armature|Fly01"
 			kscale="200">
+				<a-image class="emo" src="#emo-smile" kscale="0.5" position="0 1 0" visible="true"></a-image>
 			</a-entity>
 		</a-marker>
 		<a-marker
@@ -203,6 +226,7 @@
 			gltf-model="#shark2"
 		  	animation-mixer
 			kscale="2">
+				<a-image class="emo" src="#emo-smile" kscale="0.5" position="0 1 0" visible="true"></a-image>
 			</a-entity>
 		</a-marker>
 		<a-marker
@@ -213,6 +237,7 @@
 			gltf-model="#squirrel"
 		  	animation-mixer
 			kscale="2">
+				<a-image class="emo" src="#emo-smile" kscale="0.5" position="0 1 0" visible="true"></a-image>
 			</a-entity>
 		</a-marker>
 		<a-marker
@@ -223,6 +248,7 @@
 			gltf-model="#whale"
 		  	animation-mixer
 			kscale="2">
+				<a-image class="emo" src="#emo-smile" kscale="0.5" position="0 1 0" visible="true"></a-image>
 			</a-entity>
 		</a-marker>
 		<a-marker
@@ -233,6 +259,7 @@
 			gltf-model="#allosaurus"
 		  	animation-mixer
 			kscale="2">
+				<a-image class="emo" src="#emo-smile" kscale="0.5" position="0 1 0" visible="true"></a-image>
 			</a-entity>
 		</a-marker>
 		<a-marker
@@ -243,6 +270,7 @@
 			gltf-model="#bunny"
 		  	animation-mixer
 			kscale="2">
+				<a-image class="emo" src="#emo-smile" kscale="0.5" position="0 1 0" visible="true"></a-image>
 			</a-entity>
 		</a-marker>
 		<a-marker
@@ -253,6 +281,7 @@
 			gltf-model="#wolf"
 		  	animation-mixer="clip: 01_Run"
 			kscale="2">
+				<a-image class="emo" src="#emo-smile" kscale="0.5" position="0 1 0" visible="true"></a-image>
 			</a-entity>
 		</a-marker>
 
@@ -260,3 +289,4 @@
 	</a-scene>
 </body>
 <script src="./scripts/drag.js"></script>
+
