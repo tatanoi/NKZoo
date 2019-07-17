@@ -1,0 +1,137 @@
+.bg {
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    display: block;
+    object-fit: fill;
+}
+
+.bg-left {
+    width: 73vh;
+    height: 100vh;
+    object-fit: fill;
+    position: fixed;
+    display: block;
+    left: 0;
+    top: 0;
+}
+
+.bg-right {
+    width: 57vh;
+    height: 100vh;
+}
+
+.fill-screen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+}
+
+.mid-anchor {
+    display: block;
+    position: fixed;
+    left: 50%;
+    bottom: 50%;
+}
+
+.bottom-anchor {
+    display: block;
+    position: fixed;
+    left: 50%;
+    bottom: 10px;
+}
+
+
+.bar_container {
+    display: block;
+    width: 100%;
+    position: relative;
+    left: -50%;
+    margin: 0;
+    min-width: 50vw;
+}
+
+.mid-anchor-content {
+    display: block;
+    position: relative;
+    left: -50%;
+    top: -50%;
+    text-align: center;
+}
+
+.block-center {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+
+
+.txt-content {
+    -webkit-text-stroke: 0.5px #000;
+    font-weight: 700;
+    color: white;
+    text-shadow:
+    -0.5px -0.5px 0 #000,  
+        0.5px -0.5px 0 #000,
+        -0.5px 0.5px 0 #000,
+        0.5px 0.5px 0 #000;
+}
+.txt-footer {
+    -webkit-text-stroke: 0.5px black;
+    font-weight: 600;
+    color: white;
+    text-shadow:
+    -0.5px -0.5px 0 #000,  
+        0.5px -0.5px 0 #000,
+        -0.5px 0.5px 0 #000,
+        0.5px 0.5px 0 #000;
+        white-space: nowrap;
+}
+
+.txt-loading {
+    font-weight: 800;
+    text-align: center;
+    -webkit-text-stroke: 0.5px #aaa;
+    color: black;
+    text-shadow:
+    -0.5px -0.5px 0 #aaa,  
+        0.5px -0.5px 0 #aaa,
+        -0.5px 0.5px 0 #aaa,
+        0.5px 0.5px 0 #aaa;
+        white-space: nowrap;
+}
+
+
+@media screen and (orientation:portrait) {
+    .bg-right {
+        display: none;
+    }
+    .txt-content {
+        font-size: 5vw;
+    }
+    .txt-footer {
+        font-size: 4vw;
+    }
+
+}
+@media screen and (orientation:landscape) {
+    .bg-right {
+        display: block;
+        object-fit: fill;
+        position: fixed;
+        right: 0;
+        top: 0;
+    }
+    
+    .txt-content {
+        font-size: 3vw;
+    }
+    .txt-footer {
+        font-size: 2vw;
+    }
+}
