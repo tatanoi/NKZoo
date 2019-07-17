@@ -12,7 +12,7 @@ analyzeDialog = function() {
         document.getElementById("btn-start").style.display = "block";
     else {
         document.getElementById("bar").style.display = "none";
-        window.stop();
+        //window.stop();
     }
 
     window.stackDialogs = document.getElementsByName("dialog");
