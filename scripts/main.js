@@ -71,6 +71,7 @@ resetButtonSize = function() {
   var small = window.innerWidth < window.innerHeight? window.innerWidth : window.innerHeight;
   small *= PERCENT_BTN_TO_SCREEN;
 
+  window.const_scale = small;
 
   var modal = document.querySelector(".modal");
   modal.style.marginTop = (small*1.1).toString() + "px";

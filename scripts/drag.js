@@ -388,7 +388,8 @@ function updateDropdown() {
     for (let i = 0; i < visibleEntities.length; i++) {
         let entity = visibleEntities[i];
         let name = entity.getAttribute('id').replace('-entity', '');
-        dropdownInnerHtml += `<li><img onclick="onClickLi('${name}')" src='${patternPath}/${name}.png' style='width:40px;height:40px' alt=''> ${name}</li>`;
+        dropdownInnerHtml +=
+          `<li><img onclick="onClickLi('${name}')" src='${patternPath}/${name}.png' style='float:left; margin-right: 15px; width:${window.const_scale}px;height:${window.const_scale}px' alt=''> <text style="margin-left: 15px;font-size:${window.const_scale/2.8}px;display: block">${name}</text></li>`;
     }
     dropdownPattern.innerHTML = dropdownInnerHtml;
 }
@@ -400,7 +401,7 @@ function updateTarget() {
     let entityName = targetEl.getAttribute('id').replace('-entity', '');
     currentSpeech = speeches[entityName] || null;
     currentSound = sounds[entityName] || null;
-    btnPattern.innerHTML = `<img src="${patternPath}/${entityName}.png" style="width:25px;height:25px" alt="">`;
+    btnPattern.innerHTML = `<img src="${patternPath}/${entityName}.png" style="width:${window.const_scale / 1.4}px;height:${window.const_scale / 1.4}px" alt="">`;
 }
 
 //////////////////////////////////////////////////////////////////////////////
