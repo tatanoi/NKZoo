@@ -388,7 +388,7 @@ function updateDropdown() {
     for (let i = 0; i < visibleEntities.length; i++) {
         let entity = visibleEntities[i];
         let name = entity.getAttribute('id').replace('-entity', '');
-        dropdownInnerHtml += `<li><img onclick="onClickLi('${name}')" src='${patternPath}/${name}.png' style='width:40px;height:40px' alt=''> ${name}</li>`;
+        dropdownInnerHtml += `<li onclick="onClickLi('${name}')"><img src='${patternPath}/${name}.png' style='width:40px;height:40px' alt=''> ${name}</li>`;
     }
     dropdownPattern.innerHTML = dropdownInnerHtml;
 }
