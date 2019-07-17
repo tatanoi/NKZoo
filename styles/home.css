@@ -72,27 +72,39 @@
 
 
 .txt-content {
-    -webkit-text-stroke: 1px black;
+    -webkit-text-stroke: 0.5px #000;
     font-weight: 700;
     color: white;
     text-shadow:
-    -1px -1px 0 #555,  
-        1px -1px 0 #555,
-        -1px 1px 0 #555,
-        1px 1px 0 #555;
+    -0.5px -0.5px 0 #000,  
+        0.5px -0.5px 0 #000,
+        -0.5px 0.5px 0 #000,
+        0.5px 0.5px 0 #000;
 }
 .txt-footer {
-    -webkit-text-stroke: 1px black;
+    -webkit-text-stroke: 0.5px black;
     font-weight: 600;
     color: white;
     text-shadow:
-    -1px -1px 0 #555,  
-        1px -1px 0 #555,
-        -1px 1px 0 #555,
-        1px 1px 0 #555;
+    -0.5px -0.5px 0 #000,  
+        0.5px -0.5px 0 #000,
+        -0.5px 0.5px 0 #000,
+        0.5px 0.5px 0 #000;
         white-space: nowrap;
 }
 
+.txt-loading {
+    font-weight: 800;
+    text-align: center;
+    -webkit-text-stroke: 0.5px #aaa;
+    color: black;
+    text-shadow:
+    -0.5px -0.5px 0 #aaa,  
+        0.5px -0.5px 0 #aaa,
+        -0.5px 0.5px 0 #aaa,
+        0.5px 0.5px 0 #aaa;
+        white-space: nowrap;
+}
 
 
 @media screen and (orientation:portrait) {
