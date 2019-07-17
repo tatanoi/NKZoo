@@ -5,83 +5,117 @@
 	<meta HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
 	<script src="https://rawcdn.githack.com/bestiejs/platform.js/efa9ac0e4f4aec19f10280c90fcf8dd47fa67a2f/platform.js"></script>
 
+	<script src="https://aframe.io/releases/0.9.0/aframe.min.js"></script>
 	<script src="./scripts/first.js"></script>
-	<style>
-		.fill-screen {
-			position: absolute;
-			top: 0;
-			left: 0;
-			width: 100vw;
-			height: 100vh;
-			background: white;
-		}
+	<link rel="stylesheet" href="./styles/button.css">
+	<link rel="stylesheet" href="./styles/home.css">
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+	
+	<script src="./scripts/preloadHandler.js"></script>
 
-		.mid-anchor {
-			display: block;
-			position: absolute;
-			left: 50%;
-			top: 50%;
-		}
-
-		.mid-anchor-content {
-			display: block;
-			position: relative;
-			left: -50%;
-			top: -50%;
-			text-align: center;
-		}
-
-		.block-center {
-			display: block;
-			margin-left: auto;
-			margin-right: auto;
-		}
-
-		.bottom-content {
-			display: block;
-			position: fixed;
-			bottom: 10px;
-			text-align: center;
-		}
-
-		.txt-content {
-			font-size: 5vw;
-		}
-		.txt-footer {
-			font-size: 4vw;
-		}
-	</style>
 </head>
 <body>
+	<div style="background:white" class="fill-screen"></div>
+
+	<a-scene background="color: #AAFFAA" vr-mode-ui="enabled: false" >
+		<a-entity camera="active: true" look-controls wasd-controls position="0 -2 0" data-aframe-default-camera></a-entity>
+		<a-assets timeout="10000">
+				<a-asset-item id="allosaurus" src="./assets/models/animated/allosaurus.glb" preload="auto"></a-asset-item>
+				<a-asset-item id="bunny" src="./assets/models/animated/bunny.glb" preload="auto"></a-asset-item>
+				<a-asset-item id="butterfly" src="./assets/models/animated/butterfly.glb" preload="auto"></a-asset-item>
+				<a-asset-item id="cow" src="./assets/models/animated/cow.glb" preload="auto"></a-asset-item>
+				<a-asset-item id="crocodile" src="./assets/models/animated/crocodile.glb" preload="auto"></a-asset-item>
+				<a-asset-item id="guppie" src="./assets/models/animated/guppie.glb" preload="auto"></a-asset-item>
+				<a-asset-item id="penguin" src="./assets/models/animated/penguin.glb" preload="auto"></a-asset-item>
+				<a-asset-item id="hippopotamus" src="./assets/models/animated/hippopotamus.glb" preload="auto"></a-asset-item>
+				<a-asset-item id="rhinoceros" src="./assets/models/animated/rhinoceros.glb" preload="auto"></a-asset-item>
+				<a-asset-item id="macaw" src="./assets/models/animated/scarlet_macaw.glb" preload="auto"></a-asset-item>
+				<a-asset-item id="shark2" src="./assets/models/animated/shark2.glb" preload="auto"></a-asset-item>
+				<a-asset-item id="squirrel" src="./assets/models/animated/squirrel.glb" preload="auto"></a-asset-item>
+				<a-asset-item id="whale" src="./assets/models/animated/whale.glb" preload="auto"></a-asset-item>
+				<a-asset-item id="wolf" src="./assets/models/animated/wolf.glb" preload="auto"></a-asset-item>
+				<a-asset-item id="carrot" src="./assets/models/others/carrot.glb" preload="auto"></a-asset-item>
+			</a-assets>
+
+			<a-entity countload
+			gltf-model="#carrot">
+			</a-entity>
+			<a-entity countload
+			gltf-model="#butterfly">
+			</a-entity>
+			<a-entity countload
+            gltf-model="#cow">
+			</a-entity>
+			<a-entity countload
+			gltf-model="#crocodile">
+			</a-entity>
+			<a-entity countload
+			gltf-model="#guppie">
+			</a-entity>
+			<a-entity countload
+			gltf-model="#penguin">
+			</a-entity>
+			<a-entity countload
+			gltf-model="#hippopotamus">
+			</a-entity>
+			<a-entity countload
+			gltf-model="#rhinoceros">
+		  	</a-entity>
+			<a-entity countload
+			gltf-model="#macaw">
+			</a-entity>
+			<a-entity countload
+			gltf-model="#shark2">
+			</a-entity>
+			<a-entity countload
+			gltf-model="#squirrel">
+			</a-entity>
+			<a-entity countload
+			gltf-model="#whale">
+			</a-entity>
+			<a-entity countload
+			gltf-model="#allosaurus">
+			</a-entity>
+			<a-entity countload
+			gltf-model="#bunny">
+			</a-entity>
+			<a-entity countload
+			gltf-model="#wolf">
+			</a-entity>
+	</a-scene>
+
+	<img src="./assets/images/center.jpg" class="bg"/>
+	<img src="./assets/images/right.jpg" class="bg-right"/>
+	<img src="./assets/images/left.jpg" class="bg-left"/>
 
 	<!-- dialog thứ 3 -->
-	<div name="dialog" class="fill-screen">
+	<div name="dialog" class="fill-screen" style="display: none">
 		<div class="mid-anchor">
 			<div class="mid-anchor-content txt-content">
 				Bạn đã sẵn sàng
 			</div>
-			<button class="mid-anchor-content block-center txt-footer"
-					style="margin-top: 24px"
+			<button id="btn_final" class="mid-anchor-content block-center punch"
+					style="margin-top: 24px; display: none;"
 					onclick="window.clickFinal()"
 					>
-						Vào chơi
-					</button>
+						Tiếp tục
+			</button>
 			
 		</div>
 	</div>
 
 	<!-- dialog thứ 2 -->
-	<div name="dialog" class="fill-screen">
+	<div name="dialog" class="fill-screen" style="display: none">
 		<div class="mid-anchor">
 			<div class="mid-anchor-content txt-content">
 				Đây là hướng dẫn sử dụng
 			</div>
-			<button class="mid-anchor-content block-center txt-footer"
+			<button class="mid-anchor-content block-center punch"
 					style="margin-top: 24px"
 					onclick="window.clickNext()"
 					>
 						Tiếp tục
-					</button>
+			</button>
 			
 		</div>
 	</div>
@@ -92,15 +126,30 @@
 			<div id="content" class="mid-anchor-content txt-content">
 				Helllo ngày mới
 			</div>
-			<button id="btn-start" class="mid-anchor-content block-center txt-footer"
+			<button id="btn-start" class="mid-anchor-content block-center punch"
 					style="display: none; margin-top: 24px"
 					onclick="window.clickNext()"
 					>
 						Tiếp tục
-					</button>
+			</button>
 			
-			<div id="footer" class="bottom-content txt-footer"> a a </div>
+			
+			
 		</div>
+	</div>
+	<div class="bottom-anchor"> 
+		<audio id="sound" controls style="transform:translateX(-50%)">
+				<source src="./assets/sounds/gbHHJSssua8.mp3" type="audio/mpeg">
+				Your browser does not support the audio element.
+				</audio>
+		<div id="bar" class="bar_container">
+			<div id="loading_text" style="text-align: center">Đang tải...</div>
+			<div class="progress">
+				<div class="progress-bar progress-bar-striped" id="progress_one" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+			</div>
+			
+		</div>
+		<div id="footer" class="mid-anchor-content txt-footer"></div>
 	</div>
 	
 </body>

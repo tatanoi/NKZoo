@@ -51,6 +51,10 @@ handleAndroid = function () {
 }
 
 handleSpecificAndroid = function() {
+    if(platform.product == null) {
+        window.handleOther();
+        return;
+    }
     switch(platform.product.toLowerCase())
     {
         case "nokia 5.1":
