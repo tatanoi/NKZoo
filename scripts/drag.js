@@ -328,7 +328,7 @@ btnReset.addEventListener('click', () => {
     if (mesh) {
         let bbox = new THREE.Box3().setFromObject(mesh);
         let scale = span / bbox.getSize().length();
-        targetEl.object3D.scale.set(scale, scale, scale);
+        // targetEl.object3D.scale.set(scale, scale, scale);
         targetEl.object3D.position.set(0, 0, 0);
         targetEl.object3D.rotation.set(
             THREE.Math.degToRad(0),
