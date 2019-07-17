@@ -2,6 +2,7 @@
 <head>
     <title>NK's Zoo</title>
 	<link rel="icon" href="favicon.ico">
+	<meta HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
 	<meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
 	<script src="https://aframe.io/releases/0.9.0/aframe.min.js"></script>
 	<script src="https://jeromeetienne.github.io/AR.js/aframe/build/aframe-ar.js"></script>
@@ -12,12 +13,13 @@
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+	<script src="./scripts/main.js"></script>
 
 	<style>
 		.btn-circle {
 			position: relative;
-			width: 40px;
-			height: 40px;
+			width: 80px;
+			height: 80px;
 			padding: 6px 0px;
 			border-radius: 15px;
 			text-align: center;
@@ -32,7 +34,7 @@
 			position:absolute;
 			top: 50%;
 			left:50%;
-			width: 35px; height: 35px;
+			width: 70px; height: 70px;
 			-webkit-transform: translate(-50%, -50%);
 			-ms-transform: translate(-50%, -50%);
 			transform: translate(-50%, -50%);
@@ -40,6 +42,14 @@
 
 		.emo {
 			background-color: transparent;
+		}
+		.modal-body img{
+			float: left;
+			width: 30px;
+			height: 30px;
+			border-radius: 5px;
+			border: 1px solid black;
+			margin-right: 30px;
 		}
 	</style>
 </head>
@@ -83,6 +93,40 @@
 			</ul>
 		</div>
 	</nav>
+	<div class="modal" tabindex="-1" role="dialog" style="margin-top: 50px">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title">Các nút hỗ trợ</h5>
+					<!--<button type="button" class="close" data-dismiss="modal" aria-label="Close">-->
+						<!--<span aria-hidden="true">&times;</span>-->
+					<!--</button>-->
+				</div>
+				<div class="modal-body">
+					<div >
+						<img src="assets/images/soundwave.png">
+						<p>Nút âm thanh tiếng kêu động vật</p>
+					</div>
+					<div>
+						<img src="assets/images/speech.png">
+						<p>Nút đọc giới thiệu về loài động vật</p>
+					</div>
+					<div>
+						<img src="assets/images/emo.png">
+						<p>Nút emo</p>
+					</div>
+					<div>
+						<img src="assets/images/reset.png">
+						<p>Nút reset</p>
+					</div>
+				</div>
+				<div class="modal-footer">
+					<!--<button type="button" class="btn btn-primary">Tiếp theo</button>-->
+					<button id="close-btn" type="button" class="btn btn-secondary" data-dismiss="modal">Đóng</button>
+				</div>
+			</div>
+		</div>
+	</div>
 
 	<a-scene embedded
 			 vr-mode-ui="enabled: false"
@@ -285,7 +329,7 @@
         marker-handler
 		>
 			<a-entity id="wolf-entity" class="drag-entity"
-			gltf-model="#wolf"
+			gltf-model="#wolf" btncheck
 		  	animation-mixer="clip: 01_Run"
 			kscale="2">
 				<a-image class="emo" src="#emo-smile" kscale="0.5" position="0 1 0" visible="true"></a-image>
@@ -296,4 +340,12 @@
 	</a-scene>
 </body>
 <script src="./scripts/drag.js"></script>
+<script>
+	var dialog = document.querySelector(".modal");
+  	var closeBtn = document.getElementById("close-btn");
+  	closeBtn.onclick = function () {
+		dialog.style.display = "none";
+  	}
+
+</script>
 

@@ -1,3 +1,5 @@
+const PERCENT_BTN_TO_SCREEN = 0.02;
+
 initMain = function() {
     // window.initAutoScaleCenterGLTF();
 
@@ -44,12 +46,35 @@ initAutoScaleCenterGLTF = function() {
 //   }
 // });
 //
-// resetButtonSize = function() {
-//   var small = window.innerWidth < window.innerHeight? window.innerWidth : window.innerHeight;
-//   small = small/5;
-//   window.btnPlay.style.width = "" + small + "px";
-//   window.btnPlay.style.height = "" + small + "px";
-//   window.btnStop.style.width = "" + small + "px";
-//   window.btnStop.style.height = "" + small + "px";
-// };
+loadComplete = function() {
+  // this is loaded
+  window.resetButtonSize();
+  let dialog = document.querySelector(".modal");
+  dialog.style.display = "block"
+};
+
+initForButton = function() {
+  AFRAME.registerComponent('btncheck', {
+    init: function () {
+      this.el.addEventListener('object3dset', () => setTimeout(window.loadComplete, 500));
+    }
+  });
+};
+
+// hàm này đã dc gọi tới, giờ xử lý nữa thôi
+resetButtonSize = function() {
+  var small = window.innerWidth < window.innerHeight? window.innerWidth : window.innerHeight;
+  small *= PERCENT_BTN_TO_SCREEN;
+
+  //  gán size của mấy button trong web ar giúp mình nha tks
+  // window.btnPlay.style.width = "" + small + "px";
+  // window.btnPlay.style.height = "" + small + "px";
+  // window.btnStop.style.width = "" + small + "px";
+  // window.btnStop.style.height = "" + small + "px";
+
+  alert("size updated!");
+};
+//
+
+window.initForButton();
 //

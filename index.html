@@ -88,7 +88,9 @@
 	<img src="./assets/images/right.jpg" class="bg-right"/>
 	<img src="./assets/images/left.jpg" class="bg-left"/>
 
-	<!-- dialog thứ 3 -->
+
+	
+	<!-- dialog thứ final -->
 	<div name="dialog" class="fill-screen" style="display: none">
 		<div class="mid-anchor">
 			<div class="mid-anchor-content txt-content">
@@ -104,9 +106,49 @@
 		</div>
 	</div>
 
+	<div name="dialog" class="fill-screen" style="display: none">
+			<div class="mid-anchor">
+				<!-- bỏ hình, content vào trong -->
+				<div class="mid-anchor-content txt-content">
+					<img src="./assets/images/demo.jpg" width="90%" height="90%"/>
+                    <label>Chĩa camera vào marker</label>
+
+				</div>
+				<button class="mid-anchor-content block-center punch"
+						style="margin-top: 24px"
+						onclick="window.clickNext()"
+						>
+						<!-- button này sẽ tự động handle chuyển slide -->
+							Tiếp tục
+				</button>
+				
+			</div>
+		</div>
+	<div name="dialog" class="fill-screen" style="display: none">
+			<div class="mid-anchor">
+				<!-- bỏ hình, content vào trong -->
+				<div class="mid-anchor-content txt-content">
+					<img src="./assets/images/require.png"/>
+                    <label>Quyền camera</label>
+
+				</div>
+				<button class="mid-anchor-content block-center punch"
+						style="margin-top: 24px"
+						onclick="window.clickNext()"
+						>
+						<!-- button này sẽ tự động handle chuyển slide -->
+							Tiếp tục
+				</button>
+				
+			</div>
+		</div>
+
+
+	<!-- không cần code gì cả, cứ chèn thêm 1 dialog như này == chuyển slide -->
 	<!-- dialog thứ 2 -->
 	<div name="dialog" class="fill-screen" style="display: none">
 		<div class="mid-anchor">
+			<!-- bỏ hình, content vào trong -->
 			<div class="mid-anchor-content txt-content">
 				Đây là hướng dẫn sử dụng
 			</div>
@@ -114,6 +156,7 @@
 					style="margin-top: 24px"
 					onclick="window.clickNext()"
 					>
+					<!-- button này sẽ tự động handle chuyển slide -->
 						Tiếp tục
 			</button>
 			
