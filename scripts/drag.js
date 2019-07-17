@@ -385,11 +385,14 @@ function onClickLi(name) {
 function updateDropdown() {
     let visibleEntities = document.querySelectorAll('.clickable') || [];
     let dropdownInnerHtml = '';
+
     for (let i = 0; i < visibleEntities.length; i++) {
         let entity = visibleEntities[i];
         let name = entity.getAttribute('id').replace('-entity', '');
-        dropdownInnerHtml +=
- `<li onclick="onClickLi('${name}')"><img src='${patternPath}/${name}.png' style='width:${window.const_scale}px;height:${window.const_scale}px' alt=''> ${name}</li>`;
+        dropdownInnerHtml += `<li onclick="onClickLi('${name}')"><img src='${patternPath}/${name}.png' style='width:40px;height:40px' alt=''> ${name}</li>`;
+        if (visibleEntities.length === 1) {
+            onClickLi(name);
+        }
     }
     dropdownPattern.innerHTML = dropdownInnerHtml;
 }
