@@ -35,7 +35,7 @@
     display: block;
     position: fixed;
     left: 50%;
-    bottom: 40%;
+    top: 40%;
 }
 
 .bottom-anchor {
@@ -58,9 +58,8 @@
 .mid-anchor-content {
     display: block;
     position: relative;
-    left: -50%;
-    top: -50%;
     text-align: center;
+    transform: translate(-50%, -50%);
 }
 
 .block-center {
@@ -72,25 +71,30 @@
 
 
 .txt-content {
-    -webkit-text-stroke: 0.5px #000;
+    -webkit-text-stroke: 0.7px #000;
     font-weight: 700;
     color: white;
     text-shadow:
-    -0.5px -0.5px 0 #000,  
-        0.5px -0.5px 0 #000,
-        -0.5px 0.5px 0 #000,
-        0.5px 0.5px 0 #000;
+    -0.7px -0.7px 0 #000,
+        0.7px -0.7px 0 #000,
+        -0.7px 0.7px 0 #000,
+        0.7px 0.7px 0 #000;
+    width: 80vw;
 }
 .txt-footer {
-    -webkit-text-stroke: 0.5px black;
+    -webkit-text-stroke: 0.7px black;
     font-weight: 600;
     color: white;
     text-shadow:
-    -0.5px -0.5px 0 #000,  
-        0.5px -0.5px 0 #000,
-        -0.5px 0.5px 0 #000,
-        0.5px 0.5px 0 #000;
+    -0.7px -0.7px 0 #000,
+        0.7px -0.7px 0 #000,
+        -0.7px 0.7px 0 #000,
+        0.7px 0.7px 0 #000;
         white-space: nowrap;
+
+    text-align: center;
+    transform: translate(-50%, 0%);
+
 }
 
 .txt-loading {
@@ -106,6 +110,10 @@
         white-space: nowrap;
 }
 
+.my-img {
+    object-fit: contain;
+}
+
 
 @media screen and (orientation:portrait) {
     .bg-right {
@@ -117,7 +125,10 @@
     .txt-footer {
         font-size: 4vw;
     }
-
+    .my-img {
+        width: 80vw;
+        height: 40vh;
+    }
 }
 @media screen and (orientation:landscape) {
     .bg-right {
@@ -129,9 +140,24 @@
     }
     
     .txt-content {
-        font-size: 3vw;
+        font-size: 2.5vw;
     }
     .txt-footer {
-        font-size: 2vw;
+        font-size: 1.5vw;
     }
+
+    button {
+        font-size: 2vw!important;
+        width: 12vw!important;
+        height: 4.5vw!important;
+    }
+
+    .my-img {
+        width: 40vw;
+        height: 40vh;
+    }
+}
+
+button.punch:active {
+    margin-top: 4px;
 }

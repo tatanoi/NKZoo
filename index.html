@@ -93,95 +93,77 @@
 	<!-- dialog thứ final -->
 	<div name="dialog" class="fill-screen" style="display: none">
 		<div class="mid-anchor">
-			<div class="mid-anchor-content txt-content">
-				Bạn đã sẵn sàng
+			<div class="mid-anchor-content">
+				<label class="txt-content">Sẵn sàng chưa nào?</label>
+
+				<button id="btn_final" class="block-center punch"
+						style="display: none;"
+						onclick="window.clickFinal()"
+				>
+					Bắt đầu
+				</button>
 			</div>
-			<button id="btn_final" class="mid-anchor-content block-center punch"
-					style="margin-top: 24px; display: none;"
-					onclick="window.clickFinal()"
-					>
-						Tiếp tục
-			</button>
+
 			
 		</div>
 	</div>
 
-	<div name="dialog" class="fill-screen" style="display: none">
-			<div class="mid-anchor">
-				<!-- bỏ hình, content vào trong -->
-				<div class="mid-anchor-content txt-content">
-					<img src="./assets/images/demo.jpg" width="90%" height="90%"/>
-                    <label>Chĩa camera vào marker</label>
-
-				</div>
-				<button class="mid-anchor-content block-center punch"
-						style="margin-top: 24px"
-						onclick="window.clickNext()"
-						>
-						<!-- button này sẽ tự động handle chuyển slide -->
-							Tiếp tục
-				</button>
-				
-			</div>
-		</div>
-	<div name="dialog" class="fill-screen" style="display: none">
-			<div class="mid-anchor">
-				<!-- bỏ hình, content vào trong -->
-				<div class="mid-anchor-content txt-content">
-					<img src="./assets/images/require.png"/>
-                    <label>Quyền camera</label>
-
-				</div>
-				<button class="mid-anchor-content block-center punch"
-						style="margin-top: 24px"
-						onclick="window.clickNext()"
-						>
-						<!-- button này sẽ tự động handle chuyển slide -->
-							Tiếp tục
-				</button>
-				
-			</div>
-		</div>
-
-
-	<!-- không cần code gì cả, cứ chèn thêm 1 dialog như này == chuyển slide -->
-	<!-- dialog thứ 2 -->
 	<div name="dialog" class="fill-screen" style="display: none">
 		<div class="mid-anchor">
-			<!-- bỏ hình, content vào trong -->
-			<div class="mid-anchor-content txt-content">
-				Đây là hướng dẫn sử dụng
+			<div class="mid-anchor-content">
+
+				<img src="./assets/images/demo.jpg" class="my-img"/>
+				<label class="txt-content">Chỉ cần đưa camera quay hình động vật thì con thú sẽ hiện ra ngay.</label>
+				<button class="block-center punch"
+						onclick="window.clickNext()"
+				>
+					Tiếp tục
+				</button>
 			</div>
-			<button class="mid-anchor-content block-center punch"
-					style="margin-top: 24px"
-					onclick="window.clickNext()"
-					>
-					<!-- button này sẽ tự động handle chuyển slide -->
-						Tiếp tục
-			</button>
-			
+
+
 		</div>
 	</div>
+	<div name="dialog" class="fill-screen" style="display: none">
+			<div class="mid-anchor">
+				<div class="mid-anchor-content">
+					<img src="./assets/images/require.png"/>
+                    <label class="txt-content">Ứng dụng web này cần sử dụng camera bạn nhé!</label>
+					<button class="block-center punch"
+							onclick="window.clickNext()"
+					>
+						Tiếp tục
+					</button>
+				</div>
+
+				
+			</div>
+		</div>
+
+
 
 	<!-- dialog đầu tiên -->
 	<div name="dialog" id="final" class="fill-screen">
 		<div class="mid-anchor">
-			<div id="content" class="mid-anchor-content txt-content">
-				Helllo ngày mới
+			<div class="mid-anchor-content">
+				<label id="content" class="txt-content">
+					Chào mừng
+				</label>
+				<button id="btn-start" class="block-center punch"
+						style="display: none; margin-top: 4px"
+						onclick="window.clickNext()"
+				>
+					Tiếp tục
+				</button>
 			</div>
-			<button id="btn-start" class="mid-anchor-content block-center punch"
-					style="display: none; margin-top: 24px"
-					onclick="window.clickNext()"
-					>
-						Tiếp tục
-			</button>
+
 			
 			
 			
 		</div>
 	</div>
 	<div class="bottom-anchor"> 
-		<audio id="sound" controls style="transform:translateX(-50%)">
+		<audio id="sound" controls style="transform:translateX(-50%);height: 30px">
 				<source src="./assets/sounds/gbHHJSssua8.mp3" type="audio/mpeg">
 				Your browser does not support the audio element.
 				</audio>
@@ -192,7 +174,7 @@
 			</div>
 			
 		</div>
-		<div id="footer" class="mid-anchor-content txt-footer"></div>
+		<div id="footer" class="txt-footer"></div>
 	</div>
 	
 </body>

@@ -61,6 +61,9 @@ const soundConfigs = {
     wolf: `wolf 1 2 3 4`,
 };
 
+let sounds = {};
+let speeches = {};
+
 function initSound() {
     let audioLoader = new THREE.AudioLoader();
     let soundKeys = Object.keys(soundConfigs);
