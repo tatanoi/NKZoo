@@ -389,7 +389,7 @@ function updateDropdown() {
         let entity = visibleEntities[i];
         let name = entity.getAttribute('id').replace('-entity', '');
         dropdownInnerHtml +=
- `<li onclick="onClickLi('${name}')"><img src='${patternPath}/${name}.png' style='width:${window.const_scale}px;height:${window.const_scale}px' alt=''> ${name}</li>`;
+ `<li style="overflow: hidden" onclick="onClickLi('${name}')"><img src='${patternPath}/${name}.png' style='float: left;width:${window.const_scale}px;height:${window.const_scale}px' alt=''> <text style="margin-left: 15px;font-size:${window.const_scale/2.8}px;display: block">${name}</text></li>`;
     }
     dropdownPattern.innerHTML = dropdownInnerHtml;
 }
