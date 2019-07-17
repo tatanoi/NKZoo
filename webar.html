@@ -18,8 +18,8 @@
 	<style>
 		.btn-circle {
 			position: relative;
-			width: 80px;
-			height: 80px;
+			width: 40px;
+			height: 40px;
 			padding: 6px 0px;
 			border-radius: 15px;
 			text-align: center;
@@ -34,7 +34,7 @@
 			position:absolute;
 			top: 50%;
 			left:50%;
-			width: 70px; height: 70px;
+			width: 35px; height: 35px;
 			-webkit-transform: translate(-50%, -50%);
 			-ms-transform: translate(-50%, -50%);
 			transform: translate(-50%, -50%);
@@ -50,6 +50,9 @@
 			border-radius: 5px;
 			border: 1px solid black;
 			margin-right: 30px;
+		}
+		.modal-body>div{
+			display: flex;
 		}
 	</style>
 </head>
@@ -93,7 +96,7 @@
 			</ul>
 		</div>
 	</nav>
-	<div class="modal" tabindex="-1" role="dialog" style="margin-top: 50px">
+	<div class="modal" tabindex="-1" role="dialog">
 		<div class="modal-dialog" role="document">
 			<div class="modal-content">
 				<div class="modal-header">

@@ -1,4 +1,4 @@
-const PERCENT_BTN_TO_SCREEN = 0.02;
+const PERCENT_BTN_TO_SCREEN = 0.12;
 
 initMain = function() {
     // window.initAutoScaleCenterGLTF();
@@ -48,9 +48,11 @@ initAutoScaleCenterGLTF = function() {
 //
 loadComplete = function() {
   // this is loaded
-  window.resetButtonSize();
   let dialog = document.querySelector(".modal");
-  dialog.style.display = "block"
+  dialog.style.display = "block";
+
+
+  window.resetButtonSize();
 };
 
 initForButton = function() {
@@ -61,20 +63,73 @@ initForButton = function() {
   });
 };
 
+
+
+
 // hàm này đã dc gọi tới, giờ xử lý nữa thôi
 resetButtonSize = function() {
   var small = window.innerWidth < window.innerHeight? window.innerWidth : window.innerHeight;
   small *= PERCENT_BTN_TO_SCREEN;
 
-  //  gán size của mấy button trong web ar giúp mình nha tks
-  // window.btnPlay.style.width = "" + small + "px";
-  // window.btnPlay.style.height = "" + small + "px";
-  // window.btnStop.style.width = "" + small + "px";
-  // window.btnStop.style.height = "" + small + "px";
 
-  alert("size updated!");
+  var modal = document.querySelector(".modal");
+  modal.style.marginTop = (small*1.1).toString() + "px";
+
+  var btns = document.querySelectorAll(".btn-circle");
+  for(let i = 0; i <btns.length; ++i) {
+    btns[i].style.width = small.toString() + "px";
+    btns[i].style.height = small.toString() + "px";
+    btns[i].style.borderRadius = (small / 2.5).toString() + "px";
+    btns[i].style.padding = (small / 6.67).toString() + "px";
+  }
+
+
+  modal = document.querySelector(".dropdown");
+  modal.style.borderRadius = (small / 2.5).toString() + "px";
+
+  var btn = document.querySelector("#btnPattern");
+  btn.style.width = small.toString() + "px";
+  btn.style.height = small.toString() + "px";
+
+  // btn = document.querySelector(".dropdown-toggle::after");
+  // btn.style.backgroundSize = small.toString() + "px " + small.toString() + "px";
+  //
+
+
+
+  small /= 1.143;
+  var btnis = document.querySelectorAll(".btn-circle img");
+  for(let i = 0; i <btnis.length; ++i) {
+    btnis[i].style.width = small.toString() + "px";
+    btnis[i].style.height = small.toString() + "px";
+    btnis[i].style.borderRadius = (small / 2.5).toString() + "px";
+  }
+
+
+  btnis = document.querySelectorAll(".modal-body img");
+  for(let i = 0; i < btnis.length; ++i) {
+    btnis[i].style.width = small.toString() + "px";
+    btnis[i].style.height = small.toString() + "px";
+    btnis[i].style.borderRadius = (small / 2.5).toString() + "px";
+    btnis[i].style.marginRight = (small/5.0).toString() + "px";
+    btnis[i].style.marginBottom = (small/5.0).toString() + "px";
+    btnis[i].style.marginLeft = (small/5.0).toString() + "px";
+  }
+
+  small /= 2.5;
+  var txts = document.querySelectorAll("p");
+  for(let i = 0; i < txts.length; ++i) {
+    txts[i].style.fontSize = small.toString() + "px";
+  }
+
+  txts = document.querySelector(".modal-title");
+  txts.style.fontSize = small.toString() + "px";
+
+  txts = document.querySelector("#close-btn");
+  txts.style.fontSize = small.toString() + "px";
 };
-//
+
+
 
 window.initForButton();
 //
