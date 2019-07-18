@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<head>
+    <title>Not index</title>
+	<link rel="icon" href="favicon.ico">
+	<meta HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
+	<script src="https://aframe.io/releases/0.9.0/aframe.min.js"></script>
+</head>
+<body>
+    <script>
+        
+
+AFRAME.registerComponent('countload', {
+    init: function () {
+        this.el.setAttribute("scale", "0.001 0.001 0.001");
+        this.el.setAttribute("position", "0 0 -1");
+        this.el.setAttribute("rotation", "90 0 0");
+    },
+});
+    </script>
+	<div style="background:white" class="fill-screen"></div>
+
+	<a-scene background="color: #FFFFEE" vr-mode-ui="enabled: false" >
+        <a-camera look-controls.enabled="true"
+         look-controls wasd-controls
+          position="0 -2 0" data-aframe-default-camera></a-camera>
+		<a-assets timeout="10000">
+				<a-asset-item id="allosaurus" src="./assets/models/animated/allosaurus.glb" preload="auto"></a-asset-item>
+				<a-asset-item id="bunny" src="./assets/models/animated/bunny.glb" preload="auto"></a-asset-item>
+				<a-asset-item id="butterfly" src="./assets/models/animated/butterfly.glb" preload="auto"></a-asset-item>
+				<a-asset-item id="cow" src="./assets/models/animated/cow.glb" preload="auto"></a-asset-item>
+				<a-asset-item id="crocodile" src="./assets/models/animated/crocodile.glb" preload="auto"></a-asset-item>
+				<a-asset-item id="guppie" src="./assets/models/animated/guppie.glb" preload="auto"></a-asset-item>
+				<a-asset-item id="penguin" src="./assets/models/animated/penguin.glb" preload="auto"></a-asset-item>
+				<a-asset-item id="hippopotamus" src="./assets/models/animated/hippopotamus.glb" preload="auto"></a-asset-item>
+				<a-asset-item id="rhinoceros" src="./assets/models/animated/rhinoceros.glb" preload="auto"></a-asset-item>
+				<a-asset-item id="macaw" src="./assets/models/animated/scarlet_macaw.glb" preload="auto"></a-asset-item>
+				<a-asset-item id="shark2" src="./assets/models/animated/shark2.glb" preload="auto"></a-asset-item>
+				<a-asset-item id="squirrel" src="./assets/models/animated/squirrel.glb" preload="auto"></a-asset-item>
+				<a-asset-item id="whale" src="./assets/models/animated/whale.glb" preload="auto"></a-asset-item>
+				<a-asset-item id="wolf" src="./assets/models/animated/wolf.glb" preload="auto"></a-asset-item>
+				<a-asset-item id="carrot" src="./assets/models/others/carrot.glb" preload="auto"></a-asset-item>
+			</a-assets>
+            
+            <a-entity>
+                <a-entity countload
+                gltf-model="#carrot">
+                </a-entity>
+                <a-entity countload
+                gltf-model="#butterfly">
+                </a-entity>
+                <a-entity countload
+                gltf-model="#cow">
+                </a-entity>
+                <a-entity countload
+                gltf-model="#crocodile">
+                </a-entity>
+                <a-entity countload
+                gltf-model="#guppie">
+                </a-entity>
+                <a-entity countload
+                gltf-model="#penguin">
+                </a-entity>
+                <a-entity countload
+                gltf-model="#hippopotamus">
+                </a-entity>
+                <a-entity countload
+                gltf-model="#rhinoceros">
+                  </a-entity>
+                <a-entity countload
+                gltf-model="#macaw">
+                </a-entity>
+                <a-entity countload
+                gltf-model="#shark2">
+                </a-entity>
+                <a-entity countload
+                gltf-model="#squirrel">
+                </a-entity>
+                <a-entity countload
+                gltf-model="#whale">
+                </a-entity>
+                <a-entity countload
+                gltf-model="#allosaurus">
+                </a-entity>
+                <a-entity countload
+                gltf-model="#bunny">
+                </a-entity>
+                <a-entity countload
+                gltf-model="#wolf">
+                </a-entity>
+            </a-entity>
+			
+	</a-scene>
+
+	
+</body>
